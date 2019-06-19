@@ -1,0 +1,40 @@
+whatlibs() {
+    # needs sudo apt install apt-file
+    ldd $1 | awk '/=>/{print $(NF-1)}' | while read n; do dpkg-query -S $n; done | sed 's/^\([^:]\+\):.*$/\1/' | uniq
+}
+
+function ensure-installed {
+    # Look for a command and install it via apt, if not found
+    cmd=$1
+    installer=${2:-$1}
+    if [[ $(which $cmd) ]]; then
+        return 0
+    else
+        echo "$cmd NOT installed, trying to install via apt..."
+        sudo apt install $cmd
+        [ $? -ne 0 ] && exit 1
+    fi
+}
+
+whoruns() {
+    name=$1
+    a="$(echo $name | head -c 1)"   # get the first character
+    b="$(echo $name | tail -c +2)"  # get the remaining characters
+    ps aux | grep "[$a]$b"          # do a process search, whichout grep's self
+}
+
+cmakemake() {
+    if [ ! -d build ]; then
+        mkdir build
+    fi
+
+    cd build
+    cmake .. "$@"
+    make
+    ls && cd ..
+}
+
+rosbridge() {
+    PORT=${1:-8888}
+    roslaunch rosbridge_server rosbridge_websocket.launch port:=$PORT
+}

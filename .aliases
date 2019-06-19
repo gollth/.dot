@@ -1,0 +1,34 @@
+alias sudo='sudo '  # see https://askubuntu.com/a/22043
+
+alias ll='ls -alF'
+
+alias wifi='nmcli device wifi'
+alias network='nmcli device'
+
+alias emacs='emacs26 -nw'
+alias clip='xclip -selection c'
+alias path='realpath'
+alias open='xdg-open'
+alias ipython3='ipython3 --no-banner --classic'
+alias trans='trans -brief'
+alias translate='trans'
+alias plotjuggler='source ~/ros/util/devel/setup.bash && rosrun plotjuggler PlotJuggler'
+
+alias rostidy='rosparam delete / && yes | rosnode cleanup'
+alias rosroot='cd ~/ros/'
+alias rosreset='source ~/ros/devel/setup.bash'
+alias rosccc='~/.bin/sushi/ros-combine-compile-commands.py'
+alias rosbuild='roscheck . && catkin build && rosccc .'
+alias roshost='source ~/.bin/sushi/roshost.bash'
+
+alias traceroute='mtr -t'
+alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support
+
+alias tfecho='rosrun tf tf_echo'
+alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
+alias ssh-ros="ssh -oHostKeyAlgorithms='ssh-rsa'"
+
+alias morty-shutdown='ssh -t root@nucrt "poweroff"; ssh -t franka@nuca "sudo poweroff"'
+alias diskusage='ncdu'
+alias git-fetch-all='~/.bin/sushi/git-fetch-all.bash'
+alias phone='~/.bin/sushi/phone.py'
