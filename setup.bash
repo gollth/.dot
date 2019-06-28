@@ -14,6 +14,12 @@ ensure-installed python3-dev
 
 # Create symlinks for
 cd ~
-ln -s -f $DIR/.zshrc
-ln -s -f $DIR/.functions
-ln -s -f $DIR/.aliases
+ln -s -f $DIR/.zshrc      ~/.zshrc
+ln -s -f $DIR/.functions  ~/.functions
+ln -s -f $DIR/.aliases    ~/.aliases
+
+# Install Fuzzy finding
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+zsh  # Restart ZSH with new config

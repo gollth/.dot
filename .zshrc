@@ -54,3 +54,5 @@ source ~/.functions
 source /opt/ros/kinetic/setup.zsh
 [ -f $HOME/.roshost ] && source $HOME/.roshost;
 [ -f $HOME/.rosws ]   && source $HOME/ros/$(cat $HOME/.rosws)/devel/setup.zsh;
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
