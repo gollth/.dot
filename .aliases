@@ -30,3 +30,4 @@ alias morty-shutdown='ssh -t root@nucrt "poweroff"; ssh -t franka@nuca "sudo pow
 alias diskusage='ncdu'
 alias git-fetch-all='~/.bin/sushi/git-fetch-all.bash'
 alias phone='~/.bin/sushi/phone.py'
+alias vpn='sudo openvpn /etc/openvpn/client.conf'
