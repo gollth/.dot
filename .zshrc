@@ -46,6 +46,7 @@ source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 export EDITOR='emacs26 -nw'
+export TERM=xterm-256color
 
 source ~/.aliases
 source ~/.functions
