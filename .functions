@@ -38,3 +38,24 @@ rosbridge() {
     PORT=${1:-8888}
     roslaunch rosbridge_server rosbridge_websocket.launch port:=$PORT
 }
+
+# simple CLI calculator function
+# All available functions from NumPY are supported such as
+# pi, sin, cos, ..., deg2rad, rad2deg, array(...), dot, etc.
+#
+# Use like so:
+#
+# user@pc$ calc 1 + 1
+# 2
+#
+# user@pc$ calc "sin(deg2rad(30))"  # or
+# user@pc$ calc sin\(pi \/ 180 \* 30\)  # escape special sh characters
+# 0.4999
+#
+# user@pc$ calc "array([0,1,2]).dot(array([3,4,5]))"
+# 14
+#
+calc() {
+    expression=$@
+    python -c "from numpy import *; print($expression)"
+}
