@@ -59,3 +59,8 @@ calc() {
     expression=$@
     python -c "from numpy import *; print($expression)"
 }
+
+rviz() {
+   config=${1:-default}
+   /opt/ros/$ROS_DISTRO/bin/rviz -d ~/.rviz/"$config".rviz
+}
