@@ -23,6 +23,12 @@ whoruns() {
     ps aux | grep "[$a]$b"          # do a process search, whichout grep's self
 }
 
+# Connect to a remote host and use ZSH as remote TTY
+#
+# zssh user@host
+#
+zssh() ssh "$@" -t zsh
+
 cmakemake() {
     if [ ! -d build ]; then
         mkdir build
