@@ -3,6 +3,7 @@ alias ll='ls -alF'
 alias wifi='nmcli device wifi'
 alias network='nmcli device'
 alias ips="ip -o -4 a | awk -F'\\\\s*|/' '{ print \$2 \" \" \$4 \" /\" \$5}' | column -t"
+alias pcp="rsync --progress"   # progress copy
 
 alias emacs='emacs26 -nw'
 alias clip='xclip -selection c'
