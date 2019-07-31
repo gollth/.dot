@@ -1,0 +1,2 @@
+tidy: build --no-deps --make-args tidy --
+format: build --no-deps --make-args format --

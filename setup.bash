@@ -17,6 +17,7 @@ cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc
 ln -s -f $DIR/.functions  ~/.functions
 ln -s -f $DIR/.aliases    ~/.aliases
+ln -s -f $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
 
 # Install Fuzzy finding
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
