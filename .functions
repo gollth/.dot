@@ -70,3 +70,15 @@ rviz() {
    config=${1:-default}
    /opt/ros/$ROS_DISTRO/bin/rviz -d ~/.rviz/"$config".rviz
 }
+
+autocargo() {
+    WORKSPACE=$1
+    MANIFEST=$WORKSPACE/Cargo.toml
+    if [ ! -f $MANIFEST ]; then
+        echo "Could not find Cargo.toml file in workspace $WORKSPACE"
+        exit 1
+    fi
+
+    clear && cargo build --manifest-path $MANIFEST    # execute once initially
+    fswatch -or -e '.*' -i '\.rs$' -i '\.toml$' --event Updated --event Created --event Removed --event Renamed $WORKSPACE | xargs -I{} sh -c "clear && cargo build --manifest-path $MANIFEST"
+}
