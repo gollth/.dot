@@ -54,7 +54,7 @@ source ~/.aliases
 source ~/.functions
 
 # ROS Setup
-source /opt/ros/kinetic/setup.zsh
+[ -d /opt/ros ]       && source $(ls -d /opt/ros/* | tail -n 1)/setup.zsh
 [ -f $HOME/.roshost ] && source $HOME/.roshost;
 [ -f $HOME/.rosws ]   && source $HOME/ros/$(cat $HOME/.rosws)/devel/setup.zsh;
 
