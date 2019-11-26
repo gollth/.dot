@@ -95,5 +95,5 @@ autocargo() {
     fi
 
     clear && cargo build --manifest-path $MANIFEST    # execute once initially
-    fswatch -or -e '.*' -i '\.rs$' -i '\.toml$' --event Updated --event Created --event Removed --event Renamed $WORKSPACE | xargs -I{} sh -c "clear && cargo build --manifest-path $MANIFEST"
+    onfilechange $WORKSPACE cargo build --manifest-path $MANIFEST
 }
