@@ -36,7 +36,7 @@ cmakemake() {
 
     cd build
     cmake .. "$@"
-    make
+    make -j6
     ls && cd ..
 }
 
