@@ -12,6 +12,9 @@ ensure-installed python3-dev
 ensure-installed powerline
 ensure-installed inotify-tools
 
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
 [[ ! -d ~/.oh-my-zsh ]] && sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Create symlinks for
