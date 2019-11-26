@@ -10,7 +10,7 @@ ensure-installed zsh
 ensure-installed cmake
 ensure-installed python3-dev
 ensure-installed powerline
-ensure-installed fswatch
+ensure-installed inotify-tools
 
 [[ ! -d ~/.oh-my-zsh ]] && sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
