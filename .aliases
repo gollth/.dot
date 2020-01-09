@@ -35,3 +35,4 @@ alias phone='~/.bin/sushi/phone.py'
 alias vpn='sudo openvpn /etc/openvpn/client.conf'
 alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
 alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
+alias lscam='rs-enumerate-devices | grep -A5 "Device"'
