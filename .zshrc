@@ -44,6 +44,7 @@ source $ZSH/oh-my-zsh.sh
 [ -d "$HOME/.bin" ]       && PATH="$HOME/.bin:$PATH"
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
+[ -d /usr/share/autojump ] && source /usr/share/autojump/autojump.sh
 
 export LANG=en_US.UTF-8
 export EDITOR='emacs26 -nw'
