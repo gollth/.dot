@@ -6,6 +6,7 @@ alias ips="ip -o -4 a | awk -F'\\\\s*|/' '{ print \$2 \" \" \$4 \" /\" \$5}' | c
 alias pcp="rsync --progress"   # progress copy
 
 alias emacs='emacs26 -nw'
+alias e='emacs26 -nw'
 alias clip='xclip -selection c'
 alias path='realpath'
 alias open='xdg-open'
@@ -36,3 +37,4 @@ alias vpn='sudo openvpn /etc/openvpn/client.conf'
 alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
 alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
 alias lscam='rs-enumerate-devices | grep -A5 "Device"'
+alias phone='~/.bin/sushi/phone.py'
