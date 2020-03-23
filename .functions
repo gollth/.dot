@@ -45,6 +45,27 @@ rosbridge() {
     roslaunch rosbridge_server rosbridge_websocket.launch port:=$PORT
 }
 
+rosws() {
+    if [[ $# -eq 0 ]] ; then
+        if [[ ! -f ~/.rosws ]] ; then
+            echo "Currently no ROS workspace setup"
+            return 0
+        fi
+        echo "Current ROS workspace: " ~/ros/$(cat .rosws)
+        [[ -f ~/ros/$1/devel/setup.zsh ]] && source ~/ros/$1/devel/setup.zsh
+        return 0
+    fi
+
+    if [[ ! -e ~/ros/$1 ]] ; then
+        echo "Could not set $1 as ROS workspace because it does not exist"
+        return 1
+    fi
+
+    echo $1 > ~/.rosws
+    [[ -f ~/ros/$1/devel/setup.zsh ]] && source ~/ros/$1/devel/setup.zsh
+    echo "Setting ROS workspace: " ~/ros/$(cat .rosws)
+}
+
 # simple CLI calculator function
 # All available functions from NumPY are supported such as
 # pi, sin, cos, ..., deg2rad, rad2deg, array(...), dot, etc.
