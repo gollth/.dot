@@ -20,7 +20,6 @@ alias rosroot='cd ~/ros/'
 alias rosreset='source ~/ros/devel/setup.bash'
 alias rosccc='~/.bin/sushi/ros-combine-compile-commands.py'
 alias rosbuild='roscheck . && catkin build && rosccc .'
-alias roshost='source ~/.bin/sushi/roshost.bash'
 
 alias traceroute='mtr -t'
 alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support

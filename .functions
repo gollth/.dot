@@ -66,6 +66,20 @@ rosws() {
     echo "Setting ROS workspace: " ~/ros/$(cat .rosws)
 }
 
+roshost() {
+    if [[ $# -ne 0 ]] ; then
+        ## Esimate a "good" IP (one not from a docker tunnel adapter and not localhost)
+        IP=${2:-$(ip -o -4 a | grep -v -e "docker" -e "127.0.0.1" | awk -F'\\s*|/' '{ print $4 }')}
+        echo "export ROS_MASTER_URI=http://$1:11311" > ~/.roshost
+        echo "export ROS_IP=$IP" >> ~/.roshost
+        source ~/.roshost
+    fi
+
+    echo "Current ROS Host: $ROS_MASTER_URI"
+    echo "Current ROS IP  : $ROS_IP"
+    return 0
+}
+
 # simple CLI calculator function
 # All available functions from NumPY are supported such as
 # pi, sin, cos, ..., deg2rad, rad2deg, array(...), dot, etc.
