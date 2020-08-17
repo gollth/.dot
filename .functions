@@ -132,3 +132,12 @@ autocargo() {
     clear && cargo build --manifest-path $MANIFEST    # execute once initially
     onfilechange $WORKSPACE cargo build --manifest-path $MANIFEST
 }
+roscat () {
+    if [[ $? -ne 2 ]]; then
+        echo "roscat PKG FILE"
+        return 1
+    fi
+    PKG=$(rospack find $1)
+    FILE=$(find $PKG -type f -name $2)
+    cat $FILE
+}
