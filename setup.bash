@@ -18,6 +18,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
 [[ ! -d ~/.oh-my-zsh ]] && sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+mkdir -p ~/.bin && cd ~/.bin && wget git.io/trans && chmod +x ~/.bin/trans
+
 # Create symlinks for
 cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc

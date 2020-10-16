@@ -13,7 +13,6 @@ alias clip='xclip -selection c'
 alias path='realpath'
 alias open='xdg-open'
 alias ipython3='ipython3 --no-banner --classic'
-alias trans='trans -brief'
 alias translate='trans'
 alias plotjuggler='source ~/ros/util/devel/setup.zsh && rosrun plotjuggler PlotJuggler'
 
