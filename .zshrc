@@ -46,6 +46,11 @@ source $ZSH/oh-my-zsh.sh
 [ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
 [ -d /usr/share/autojump ] && source /usr/share/autojump/autojump.sh
 
+if [[ -d "$HOME/Library/Python" ]] ; then
+    # Add python local libraries to Path (OSX)
+    PATH="$HOME/Library/Python/$(ls $HOME/Library/Python | tail -n 1)/bin:$PATH"
+fi
+
 export LANG=en_US.UTF-8
 export EDITOR='emacs26 -nw'
 export TERM=xterm-256color
