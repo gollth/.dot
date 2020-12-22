@@ -39,7 +39,9 @@ whoruns() {
 #
 # zssh user@host
 #
-zssh() ssh "$@" -t zsh
+zssh() {
+    ssh "$@" -t zsh
+}
 
 cmakemake() {
     if [ ! -d build ]; then
