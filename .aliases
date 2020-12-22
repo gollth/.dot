@@ -1,40 +1,48 @@
 alias ll='ls -alF'
 
-alias wifi='nmcli device wifi'
-alias network='nmcli device'
-alias ips="ip -o a | awk -F'\\\\s*|/' '{ print \$2 \" \" \$4 \" /\" \$5}' | column -t"
-alias ips4="ip -o -4 a | awk -F'\\\\s*|/' '{ print \$2 \" \" \$4 \" /\" \$5}' | column -t"
-alias ips6="ip -o -6 a | awk -F'\\\\s*|/' '{ print \$2 \" \" \$4 \" /\" \$5}' | column -t"
+
+if [[ $(uname -s) == "Linux" ]]; then
+    # Aliases specialied for Linux
+    alias emacs='emacs26 -nw'
+    alias e='emacs26 -nw'
+    alias wifi='nmcli device wifi'
+    alias network='nmcli device'
+    alias clip='xclip -selection c'
+    alias path='realpath'
+    alias open='xdg-open'
+
+    # ROS Aliases
+    alias plotjuggler='source ~/ros/util/devel/setup.zsh && rosrun plotjuggler PlotJuggler'
+
+    alias rostidy='rosparam delete / && yes | rosnode cleanup'
+    alias rosroot='cd ~/ros/'
+    alias rosreset='source ~/ros/devel/setup.bash'
+    alias rosccc='~/.bin/sushi/ros-combine-compile-commands.py'
+    alias rosbuild='roscheck . && catkin build && rosccc .'
+
+    alias tfecho='rosrun tf tf_echo'
+    alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
+    alias ssh-ros="ssh -oHostKeyAlgorithms='ssh-rsa'"
+
+    alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
+    alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
+
+elif [[ $(uname -s) == "Darwin" ]]; then
+    # Aliases specialied for OSX
+    alias rosetta='arch -x86_64'
+    alias brew='rosetta brew'
+    alias emacs='rosetta emacs -nw'
+    alias e='rosetta emacs -nw'
+
+fi
+
 alias pcp="rsync --progress"   # progress copy
 
-alias emacs='emacs26 -nw'
-alias e='emacs26 -nw'
-alias clip='xclip -selection c'
-alias path='realpath'
-alias open='xdg-open'
+alias ipython='ipython --no-banner --classic'
 alias ipython3='ipython3 --no-banner --classic'
 alias translate='trans'
-alias plotjuggler='source ~/ros/util/devel/setup.zsh && rosrun plotjuggler PlotJuggler'
-
-alias rostidy='rosparam delete / && yes | rosnode cleanup'
-alias rosroot='cd ~/ros/'
-alias rosreset='source ~/ros/devel/setup.bash'
-alias rosccc='~/.bin/sushi/ros-combine-compile-commands.py'
-alias rosbuild='roscheck . && catkin build && rosccc .'
 
 alias traceroute='mtr -t'
 alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support
 
-alias tfecho='rosrun tf tf_echo'
-alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
-alias ssh-ros="ssh -oHostKeyAlgorithms='ssh-rsa'"
-
-alias morty-shutdown='ssh -t root@nucrt "poweroff"; ssh -t franka@nuca "sudo poweroff"'
-alias diskusage='ncdu'
-alias git-fetch-all='~/.bin/sushi/git-fetch-all.bash'
-alias phone='~/.bin/sushi/phone.py'
-alias vpn='sudo openvpn /etc/openvpn/client.conf'
-alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
-alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
 alias lscam='rs-enumerate-devices | grep -A5 "Device"'
-alias phone='~/.bin/sushi/phone.py'
