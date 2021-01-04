@@ -39,6 +39,13 @@ if args.print_header:
 for interface in output.splitlines():
     parts = interface.split()
     name = parts[0][:-1]   # remove trailing colon
+    try:
+        int(name)
+    except ValueError:
+        pass
+    else:
+        # If first item in the line is the index, we use the second one
+        name = parts[1][:-1]
 
     # Skip this interface if tis name does not match user predicate
     if not args.ifname in name:
