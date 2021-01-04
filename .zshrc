@@ -55,7 +55,7 @@ fi
 export LANG=en_US.UTF-8
 export EDITOR='emacs26 -nw'
 export TERM=xterm-256color
-command -v rustc && export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+command -v rustc > /dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 
 source ~/.aliases
