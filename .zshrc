@@ -38,6 +38,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zprofile
 
 # User configuration
 
