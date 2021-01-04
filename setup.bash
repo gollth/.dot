@@ -76,6 +76,9 @@ fi
 # Install translate CLI
 [[ ! -f ~/.bin/trans ]] && cd ~/.bin && wget git.io/trans && chmod +x ~/.bin/trans
 
+# Install HTTP Status Code CLI Utility
+! command -v hs &> /dev/null && npm install http-status-identifier-cli -g
+
 # Create symlinks
 cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc
