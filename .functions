@@ -3,16 +3,28 @@ whatlibs() {
     ldd $1 | awk '/=>/{print $(NF-1)}' | while read n; do dpkg-query -S $n; done | sed 's/^\([^:]\+\):.*$/\1/' | uniq
 }
 
-function ensure-installed {
-    # Look for a command and install it via apt, if not found
+ensure-installed() {
     cmd=$1
     installer=${2:-$1}
-    if [[ $(which $cmd) ]]; then
+    if command -v $cmd &> /dev/null; then
+        echo "$cmd already installed"
         return 0
-    else
+    fi
+
+    if [[ $(uname -s) == "Linux" ]] ; then
+        # Install it via apt
         echo "$cmd NOT installed, trying to install via apt..."
-        sudo apt install $cmd
-        [ $? -ne 0 ] && exit 1
+        sudo apt install $installer
+        [ $? -ne 0 ] && return 1
+
+    elif [[ $(uname -s) == "Darwin" ]] ; then
+        # Install it via homebrew
+        echo "$cmd NOT installed, trying to install via brew..."
+        brew install $installer
+        [ $? -ne 0 ] && return 1
+
+    else
+        echo "Unsupported OS " $(uname -s) >&2
     fi
 }
 
@@ -27,7 +39,9 @@ whoruns() {
 #
 # zssh user@host
 #
-zssh() ssh "$@" -t zsh
+zssh() {
+    ssh "$@" -t zsh
+}
 
 cmakemake() {
     if [ ! -d build ]; then

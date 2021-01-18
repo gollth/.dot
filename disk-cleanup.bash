@@ -27,3 +27,12 @@ if command -v docker &> /dev/null ; then
     echo "|> Pruning dangling Docker images and build caches"
     sudo docker system prune
 fi
+
+if [[ -d /var/lib/mongodb ]] ; then
+    echo "|> Cleaning /var/lib/mongodb/journal logs"
+    sudo systemctl mongodb stop
+    OK=$?
+    sudo rm -rfI /var/lib/mongodb/journal
+    sudo systemctl mongodb start
+fi
+
