@@ -70,8 +70,9 @@ if ! command -v haskell-language-server-wrapper &> /dev/null; then
 fi
 
 
-# Install OH MY ZSH
+# Install OH MY ZSH & powerlevel10k
 [[ ! -d ~/.oh-my-zsh ]] && sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+[[ ! -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Install translate CLI
 [[ ! -f ~/.bin/trans ]] && cd ~/.bin && wget git.io/trans && chmod +x ~/.bin/trans
@@ -82,6 +83,7 @@ fi
 # Create symlinks
 cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc
+ln -s -f $DIR/.p10k.zsh   ~/.p10k.zsh
 ln -s -f $DIR/.functions  ~/.functions
 ln -s -f $DIR/.aliases    ~/.aliases
 ln -s -f $DIR/ips.py      ~/.bin/ips
