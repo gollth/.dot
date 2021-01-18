@@ -83,7 +83,7 @@ fi
 # Create symlinks
 cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc
-ln -s -f $DIR/.p10k.zsh   ~/.p10k.zsh
+ln -s -f $DIR/p10k.$OS.zsh ~/.p10k.zsh
 ln -s -f $DIR/.functions  ~/.functions
 ln -s -f $DIR/.aliases    ~/.aliases
 ln -s -f $DIR/ips.py      ~/.bin/ips
