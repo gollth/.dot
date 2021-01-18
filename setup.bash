@@ -36,6 +36,9 @@ if [[ $OS == "macOS" ]]; then
     ensure-installed ip iproute2mac # for IP utils
     ensure-installed watch
     ensure-installed jq
+
+    # Install XCode tools
+    xcode-select --install
 fi
 
 
