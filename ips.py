@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import os
 import re
@@ -17,14 +17,12 @@ parser.add_argument('ifname', nargs='?', default='', help="Filter for specific i
 args = parser.parse_args()
 all_protocols = args.ipv4 is None and args.ipv6 is None and args.mac is None
 
-process = subprocess.run(
+stdout = subprocess.check_output(
     'ip address show'.split(),
-    check=True,
-    capture_output=True
 )
 
 # Convert each block to "oneline" representation
-output = re.sub(r'\n\s+', ' ', process.stdout.decode('utf-8'))
+output = re.sub(r'\n\s+', ' ', stdout.decode('utf-8'))
 
 pattern_ipv4 = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{1,3}')
 pattern_ipv6 = re.compile(r'([0-9a-f]{0,4}::){0,7}[0-9a-f]+\/\d+')
