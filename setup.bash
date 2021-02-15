@@ -18,6 +18,7 @@ ensure-installed wget
 ensure-installed zsh
 ensure-installed cmake
 ensure-installed python3
+ensure-installed python-argcomplete
 
 # Update PIP if required
 pip install --upgrade pip
