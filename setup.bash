@@ -90,6 +90,13 @@ if [ ! -f ~/.bin/haskell-language-server-wrapper ] ; then
     chmod +x ~/.bin/haskell-language-server-wrapper
 fi
 
+# Install Fira Code Font
+if ! fc-list | grep -q firacode ; then
+    ensure-installed fonts-firacode
+    wget https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip -O /tmp/fira-code-symbols.zip
+    sudo unzip -o /tmp/fira-code-symbols.zip -d /usr/share/fonts/opentype/
+    sudo fc-cache -f -v   # Refresh the font cache
+fi
 
 # Install OH MY ZSH & powerlevel10k
 echo "Installing OH MY ZSH now. If asked to start ZSH now, say 'No' to continue with installation!"
