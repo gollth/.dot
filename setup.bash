@@ -59,6 +59,7 @@ fi
 [[ ! -d ~/.emacs.d ]]     && git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d --branch develop
 [[ ! -d ~/.spacemacs.d ]] && git clone https://github.com/gollth/.spacemacs.d ~/.spacemacs.d --recursive
 [[ ! -f ~/.spacemacs ]]   && ln -sf ~/.spacemacs.d/.spacemacs ~/.spacemacs
+[[ ! -f ~/.emacs.d/private/roslaunch-jump ]] && git clone https://github.com/Maverobot/roslaunch-jump ~/.emacs.d/private/roslaunch-jump
 if [ ! -d ~/.spacemacs.d/ccls/build ] ; then
   echo "Now building CCLS C/C++ Language Server"
   pushd `pwd`
