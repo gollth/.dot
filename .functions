@@ -14,7 +14,7 @@ ensure-installed() {
     if [[ $(uname -s) == "Linux" ]] ; then
         # Install it via apt
         echo "$cmd NOT installed, trying to install via apt..."
-        sudo apt install $installer
+        sudo apt install -y $installer
         [ $? -ne 0 ] && return 1
 
     elif [[ $(uname -s) == "Darwin" ]] ; then
