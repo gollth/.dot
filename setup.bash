@@ -76,12 +76,6 @@ if [ ! -d ~/.spacemacs.d/ccls/build ] ; then
   cd `popd`
 fi
 
-# Install NVM & NPM
-[[ ! -d ~/.nvm ]] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"  # This loads nvm
-nvm install v14.16.0
-
 # Install Haskell Cabal
 ! command -v ghcup && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 

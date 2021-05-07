@@ -42,6 +42,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     git
     fzf
+    nvm
 )
 
 source $ZSH/oh-my-zsh.sh
