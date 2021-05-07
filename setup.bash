@@ -82,8 +82,8 @@ export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"  # This loads nvm
 nvm install v14.16.0
 
-# Install Stack Haskell
-! command -v stack &> /dev/null && curl -sSL https://get.haskellstack.org/ | sh
+# Install Haskell Cabal
+! command -v ghcup && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 # Install Haskell Language Server & Wrapper
 RELEASE=$(curl -sX GET https://api.github.com/repos/haskell/haskell-language-server/git/refs/tags | jq ".[-1].ref" | sed 's/"refs\/tags\/\(.*\)"/\1/')
