@@ -35,6 +35,12 @@ pip3 install --user ipython
 if [[ $OS == "Linux" ]]; then
     ensure-installed python3-dev
     ensure-installed powerline
+
+    # Install find-fd
+    if ! command -v fd &> /dev/null ; then
+      wget -O /tmp/fd_8.2.1_amd64.deb "https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb"
+      sudo dpkg -i /tmp/fd_8.2.1_amd64.deb
+    fi
 fi
 
 if [[ $OS == "macOS" ]]; then
