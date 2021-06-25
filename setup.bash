@@ -22,6 +22,7 @@ ensure-installed python-pip
 ensure-installed python3-pip
 ensure-installed python-argcomplete
 ensure-installed silversearcher-ag
+ensure-installed entr
 ensure-installed jq
 
 # Update PIP if required

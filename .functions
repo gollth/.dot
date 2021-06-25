@@ -120,32 +120,6 @@ rviz() {
    /opt/ros/$ROS_DISTRO/bin/rviz -d ~/.rviz/"$config".rviz
 }
 
-function onfilechange {
-    file=$1
-    cmd=$2
-    if [ -z $file ] || [ -z $cmd ] ; then
-        echo "Usage: on-file-change <FILE> <CMD>"
-        echo ""
-    else
-
-        shift; shift;
-        # inotify switches: recursive/monitor/quite
-        # xargs   switches: -n1 (one arg at a time), -P1 (max one process at a time)
-        inotifywait -rmq $file --event modify --event create --event move --event delete --format '%w' | xargs -n1 -P1 $cmd $@
-    fi
-}
-
-autocargo() {
-    WORKSPACE=$1
-    MANIFEST=$WORKSPACE/Cargo.toml
-    if [ ! -f $MANIFEST ]; then
-        echo "Could not find Cargo.toml file in workspace $WORKSPACE"
-        exit 1
-    fi
-
-    clear && cargo build --manifest-path $MANIFEST    # execute once initially
-    onfilechange $WORKSPACE cargo build --manifest-path $MANIFEST
-}
 roscat () {
     if [[ $? -ne 2 ]]; then
         echo "roscat PKG FILE"
