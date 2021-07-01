@@ -94,6 +94,17 @@ roshost() {
     return 0
 }
 
+ros-actionlib-state() {
+  if [[ $@ -eq 0 ]]; then
+    echo "Usage: ros-actionlib-state N"
+    echo ""
+    echo "  N:   integer from 0 to 8 to lookup in 'actionlib.CommState'"
+    return 1
+  fi
+
+  python -c "import actionlib; print [k for k,i in actionlib.CommState.__dict__.iteritems() if i == $1]"
+}
+
 # simple CLI calculator function
 # All available functions from NumPY are supported such as
 # pi, sin, cos, ..., deg2rad, rad2deg, array(...), dot, etc.
