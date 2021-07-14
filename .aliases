@@ -41,6 +41,7 @@ alias pcp="rsync --progress"   # progress copy
 alias ipython='ipython --no-banner --classic'
 alias ipython3='ipython3 --no-banner --classic'
 alias translate='trans'
+alias arduino='arduino-cli'
 
 alias traceroute='mtr -t'
 alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support
