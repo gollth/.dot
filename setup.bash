@@ -129,6 +129,8 @@ echo "Installing OH MY ZSH now. If asked to start ZSH now, say 'No' to continue 
 # Install HTTP Status Code CLI Utility
 ! command -v hs &> /dev/null && npm install http-status-identifier-cli -g
 
+npm install -g http-status-identifier-cli
+
 # Create symlinks
 cd ~
 ln -s -f $DIR/.zshrc      ~/.zshrc
