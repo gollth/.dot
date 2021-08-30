@@ -129,7 +129,9 @@ echo "Installing OH MY ZSH now. If asked to start ZSH now, say 'No' to continue 
 # Install HTTP Status Code CLI Utility
 ! command -v hs &> /dev/null && npm install http-status-identifier-cli -g
 
-npm install -g http-status-identifier-cli
+
+# Install SCP/SFTP TUI
+curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh
 
 # Create symlinks
 cd ~

@@ -46,4 +46,6 @@ alias arduino='arduino-cli'
 alias traceroute='mtr -t'
 alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support
 
+alias tscp='termscp'
+
 alias lscam='rs-enumerate-devices | grep -A5 "Device"'
