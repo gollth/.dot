@@ -140,6 +140,7 @@ ln -s -f $DIR/p10k.$OS.zsh ~/.p10k.zsh
 ln -s -f $DIR/.functions  ~/.functions
 ln -s -f $DIR/.aliases    ~/.aliases
 ln -s -f $DIR/ips.py      ~/.bin/ips
+ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
 
 # Install Fuzzy finding

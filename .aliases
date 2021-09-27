@@ -12,8 +12,6 @@ if [[ $(uname -s) == "Linux" ]]; then
     alias open='xdg-open'
 
     # ROS Aliases
-    alias plotjuggler='source ~/ros/util/devel/setup.zsh && rosrun plotjuggler PlotJuggler'
-
     alias rostidy='rosparam delete / && yes | rosnode cleanup'
     alias rosroot='cd ~/ros/'
     alias rosreset='source ~/ros/devel/setup.bash'
