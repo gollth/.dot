@@ -58,11 +58,11 @@ fi
 # Create ~/.bin folder if not yet present
 mkdir -p ~/.bin
 
-# Install Emacs26
-if ! command -v emacs26 &> /dev/null ; then
+# Install Emacs
+if ! command -v emacs27 &> /dev/null ; then
   echo "Emacs NOT installed"
   sudo add-apt-repository ppa:kelleyk/emacs
-  ensure-installed emacs26
+  ensure-installed emacs27
 fi
 
 # Install Spacemacs

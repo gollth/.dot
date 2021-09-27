@@ -3,8 +3,8 @@ alias ll='ls -alF'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
-    alias emacs='emacs26 -nw'
-    alias e='emacs26 -nw'
+    alias emacs='emacs27 -nw'
+    alias e='emacs27 -nw'
     alias wifi='nmcli device wifi'
     alias network='nmcli device'
     alias clip='xclip -selection c'
