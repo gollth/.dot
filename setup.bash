@@ -42,6 +42,10 @@ if [[ $OS == "Linux" ]]; then
       wget -O /tmp/fd_8.2.1_amd64.deb "https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb"
       sudo dpkg -i /tmp/fd_8.2.1_amd64.deb
     fi
+
+    if command -v cargo &> /dev/null ; then
+        cargo install exa
+    fi
 fi
 
 if [[ $OS == "macOS" ]]; then
@@ -49,6 +53,7 @@ if [[ $OS == "macOS" ]]; then
     ensure-installed watch
     ensure-installed fd
     ensure-installed coreutils  # for GNU ls
+    ensure-installed exa
 
     # Install XCode tools
     xcode-select --install

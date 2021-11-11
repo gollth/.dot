@@ -1,5 +1,5 @@
-alias ll='ls -alF'
-
+alias ll='exa -alh --git --color-scale'
+alias l=ll
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
