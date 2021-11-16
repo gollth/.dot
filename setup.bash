@@ -24,6 +24,7 @@ ensure-installed python-argcomplete
 ensure-installed silversearcher-ag
 ensure-installed entr
 ensure-installed jq
+ensure-installed autotrash
 
 # Update PIP if required
 pip  install --upgrade pip
@@ -36,6 +37,7 @@ pip3 install --user ipython
 if [[ $OS == "Linux" ]]; then
     ensure-installed python3-dev
     ensure-installed powerline
+    ensure-installed trash-cli
 
     # Install find-fd
     if ! command -v fd &> /dev/null ; then
@@ -54,6 +56,7 @@ if [[ $OS == "macOS" ]]; then
     ensure-installed fd
     ensure-installed coreutils  # for GNU ls
     ensure-installed exa
+    ensure-installed trash
 
     # Install XCode tools
     xcode-select --install

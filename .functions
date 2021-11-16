@@ -3,6 +3,21 @@ whatlibs() {
     ldd $1 | awk '/=>/{print $(NF-1)}' | while read n; do dpkg-query -S $n; done | sed 's/^\([^:]\+\):.*$/\1/' | uniq
 }
 
+trash() {
+    if [[ $(uname -s) == "Linux" ]] ; then
+        autotrash -d 30 --trash-path=~/.local/share/Trash
+    elif [[ $(uname -s) == "Darwin" ]] ; then
+        autotrash -d 30 --trash-path=~/.Trash
+    else
+        echo "Unsupported OS " $(uname -s) >&2
+        return 1
+    fi
+
+    # TODO Check if this works on OSX as well
+    /usr/bin/trash "$@"
+
+}
+
 ensure-installed() {
     cmd=$1
     installer=${2:-$1}
