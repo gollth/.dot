@@ -35,6 +35,8 @@ elif [[ $(uname -s) == "Darwin" ]]; then
 fi
 
 alias pcp="rsync --progress"   # progress copy
+alias google="googler"
+alias g="googler"
 
 alias ipython='ipython --no-banner --classic'
 alias ipython3='ipython3 --no-banner --classic'

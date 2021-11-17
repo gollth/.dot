@@ -25,6 +25,7 @@ ensure-installed silversearcher-ag
 ensure-installed entr
 ensure-installed jq
 ensure-installed autotrash
+ensure-installed googler
 
 # Update PIP if required
 pip  install --upgrade pip
@@ -48,6 +49,11 @@ if [[ $OS == "Linux" ]]; then
     if command -v cargo &> /dev/null ; then
         cargo install exa
     fi
+
+    if command -v googler &> /dev/null ; then
+        sudo googler -u   # upgrade to 4.2.3
+    fi
+
 fi
 
 if [[ $OS == "macOS" ]]; then
