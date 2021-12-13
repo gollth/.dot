@@ -18,6 +18,11 @@ trash() {
 
 }
 
+mkdircd() {
+  mkdir -p $1
+  cd $1
+}
+
 ensure-installed() {
     cmd=$1
     installer=${2:-$1}
