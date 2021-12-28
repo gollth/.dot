@@ -156,6 +156,7 @@ ln -s -f $DIR/.aliases    ~/.aliases
 ln -s -f $DIR/ips.py      ~/.bin/ips
 ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
+[[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
 
 # Install Fuzzy finding
 if [[ ! -d ~/.fzf ]]; then
