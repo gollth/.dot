@@ -24,6 +24,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 
     alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
     alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
+    alias swap-clear='sudo swapoff -a; sudo swapon -a'
 
 elif [[ $(uname -s) == "Darwin" ]]; then
     # Aliases specialied for OSX
