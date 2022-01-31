@@ -26,6 +26,7 @@ ensure-installed entr
 ensure-installed jq
 ensure-installed autotrash
 ensure-installed googler
+ensure-installed curl
 
 # Update PIP if required
 pip  install --upgrade pip
@@ -34,6 +35,12 @@ pip3 install --upgrade pip
 # Install ipython CLI
 pip install --user ipython
 pip3 install --user ipython
+
+# Rust
+if ! command cargo &> /dev/null ; then
+    echo "Installing Rust & Cargo now"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 if [[ $OS == "Linux" ]]; then
     ensure-installed python3-dev
