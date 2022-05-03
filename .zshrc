@@ -76,7 +76,7 @@ source ~/.functions
 # ROS Setup
 [ -d /opt/ros ]       && source $(ls -d /opt/ros/* | tail -n 1)/setup.zsh
 [ -f $HOME/.roshost ] && source $HOME/.roshost;
-[ -f $HOME/.rosws ]   && source $HOME/ros/$(cat $HOME/.rosws)/devel/setup.zsh;
+[ -f $HOME/.rosws ]   && source $HOME/$(cat $HOME/.rosws)/devel/setup.zsh;
 
 # NVM Setup
 export NVM_DIR="$HOME/.nvm"
