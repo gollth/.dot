@@ -10,6 +10,7 @@ if [[ $(uname -s) == "Linux" ]]; then
     alias clip='xclip -selection c'
     alias path='realpath'
     alias open='xdg-open'
+    alias apt-search='apt-cache madison'
 
     # ROS Aliases
     alias rostidy='rosparam delete / && yes | rosnode cleanup'
