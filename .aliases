@@ -23,6 +23,7 @@ if [[ $(uname -s) == "Linux" ]]; then
 
     alias tfecho='rosrun tf tf_echo'
     alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
+    alias controller-manager='rosrun rqt_controller_manager rqt_controller_manager'
     alias ssh-ros="ssh -oHostKeyAlgorithms='ssh-rsa'"
 
     alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
