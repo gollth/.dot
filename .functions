@@ -148,7 +148,11 @@ calc() {
 
 rviz() {
    config=${1:-default}
-   /opt/ros/$ROS_DISTRO/bin/rviz -d ~/.rviz/"$config".rviz
+   mkdir -p ~/.rviz/
+   if [[ ! -f ~/.rviz/${config}.rviz ]]; then
+     cp /opt/ros/$ROS_DISTRO/share/rviz/default.rviz ~/.rviz/${config}.rviz
+   fi
+   /opt/ros/$ROS_DISTRO/bin/rviz -d ~/.rviz/${config}.rviz
 }
 
 roscat () {
