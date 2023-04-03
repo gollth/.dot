@@ -49,8 +49,7 @@ if [[ $OS == "Linux" ]]; then
 
     # Install find-fd
     if ! command -v fd &> /dev/null ; then
-      wget -O /tmp/fd_8.2.1_amd64.deb "https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb"
-      sudo dpkg -i /tmp/fd_8.2.1_amd64.deb
+        cargo install fd-find
     fi
 
     if command -v cargo &> /dev/null ; then
