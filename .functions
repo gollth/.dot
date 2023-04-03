@@ -164,3 +164,11 @@ roscat () {
     FILE=$(find $PKG -type f -name $2)
     cat $FILE
 }
+
+portscan() {
+    if [[ $? -eq 0 ]]; then
+        echo "Usage: portscan localhost"
+        return 1
+    fi
+    nmap $@
+}
