@@ -56,7 +56,7 @@ if [[ $OS == "Linux" ]]; then
         cargo install exa
     fi
 
-    if command -v googler &> /dev/null ; then
+    if ! command -v googler &> /dev/null ; then
         sudo googler -u   # upgrade to 4.2.3
     fi
 
