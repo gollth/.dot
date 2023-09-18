@@ -55,6 +55,9 @@ if [[ $OS == "Linux" ]]; then
     if ! command -v exa &> /dev/null ; then
         cargo install exa
     fi
+    if ! command -v irust &> /dev/null ; then
+        cargo install irust
+    fi
 
     if ! command -v googler &> /dev/null ; then
         sudo googler -u   # upgrade to 4.2.3
