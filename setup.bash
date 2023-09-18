@@ -52,7 +52,7 @@ if [[ $OS == "Linux" ]]; then
         cargo install fd-find
     fi
 
-    if command -v cargo &> /dev/null ; then
+    if ! command -v exa &> /dev/null ; then
         cargo install exa
     fi
 
