@@ -1,6 +1,9 @@
 alias ll='exa -alh --git --color-scale'
 alias l=ll
-alias j=zoxide
+alias j=z
+
+alias zz=zellij
+alias za="zellij attach"
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux

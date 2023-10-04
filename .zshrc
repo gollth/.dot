@@ -73,6 +73,8 @@ command -v rustc > /dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/l
 source ~/.aliases
 source ~/.functions
 
+eval "$(zoxide init zsh)"
+
 # ROS Setup
 [ -d /opt/ros ]       && source $(ls -d /opt/ros/* | tail -n 1)/setup.zsh
 [ -f $HOME/.roshost ] && source $HOME/.roshost;

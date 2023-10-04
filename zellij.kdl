@@ -1,0 +1,60 @@
+keybinds clear-defaults=true {
+    normal {
+        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt /" { NewPane "Right"; }
+        bind "Alt -" { NewPane "Down"; }
+        bind "Alt d" { ToggleFocusFullscreen; }
+        bind "Alt q" { CloseFocus; }
+        bind "Alt Q" { CloseTab; }
+        bind "Alt z" { Detach; }
+        bind "Alt H" { MovePane "Left"; }
+        bind "Alt L" { MovePane "Right"; }
+        bind "Alt J" { MovePane "Down"; }
+        bind "Alt K" { MovePane "Up"; }
+        bind "Alt ;" { NextSwapLayout; }
+        bind "Alt t" { NewTab; }
+        bind "Alt (" { GoToPreviousTab; }
+        bind "Alt )" { GoToNextTab; }
+        bind "Alt ." { ToggleFloatingPanes; }
+        bind "Alt r" { SwitchToMode "RenameTab"; }
+        bind "Alt f" { SwitchToMode "EnterSearch"; }
+    }
+    entersearch {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        bind "Enter" { SwitchToMode "Search"; }
+    }
+
+    search {
+        bind "Ctrl f" { SwitchToMode "Normal"; }
+        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "n" { Search "down"; }
+        bind "p" { Search "up"; }
+        bind "i" { SearchToggleOption "CaseSensitivity"; }
+    }
+
+    renametab {
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
+    }
+    shared_except "normal" {
+        bind "Enter" "Esc" { SwitchToMode "Normal"; }
+    }
+}
+
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }
+    compact-bar { path "compact-bar"; }
+    session-manager { path "session-manager"; }
+}
+
+mouse_mode true
+copy_command "xclip -selection clipboard"
+
+theme "nord"
