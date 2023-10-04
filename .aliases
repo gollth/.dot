@@ -1,5 +1,6 @@
 alias ll='exa -alh --git --color-scale'
 alias l=ll
+alias j=zoxide
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
