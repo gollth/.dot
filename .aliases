@@ -5,6 +5,8 @@ alias j=z
 alias zz=zellij
 alias za="zellij attach"
 
+alias vim=nvim
+
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
     alias emacs='emacs27 -nw'
