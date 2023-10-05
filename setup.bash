@@ -107,30 +107,6 @@ if [ ! -d ~/.spacemacs.d/ccls/build ]; then
 	cd $(popd)
 fi
 
-# Install Haskell Cabal
-! command -v ghcup && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-
-# Install Haskell Language Server & Wrapper
-RELEASE=$(curl -sX GET https://api.github.com/repos/haskell/haskell-language-server/git/refs/tags | jq ".[-1].ref" | sed 's/"refs\/tags\/\(.*\)"/\1/')
-if [ ! -f ~/.bin/haskell-language-server ]; then
-	HASKELL_LSP_VERSION=8.6.5
-	echo "Downloading Haskell Language Server Version $HASKELL_LSP_VERSION (Release $RELEASE) from Github for $OS"
-	curl -#SL --output /tmp/haskell-language-server.gz https://github.com/haskell/haskell-language-server/releases/download/$RELEASE/haskell-language-server-$OS-$HASKELL_LSP_VERSION.gz
-	gunzip /tmp/haskell-language-server.gz
-	rm /tmp/haskekll-language-server.gz
-	mv /tmp/haskell-language-server ~/.bin/
-	chmod +x ~/.bin/haskell-language-server
-fi
-
-# Install Haskell Language Server Wrapper
-if [ ! -f ~/.bin/haskell-language-server-wrapper ]; then
-	echo "Downllading Haskell Language Server Wrapper (Release $RELEASE) from Github for $OS"
-	curl -#SL --output /tmp/haskell-language-server-wrapper.gz https://github.com/haskell/haskell-language-server/releases/download/$RELEASE/haskell-language-server-wrapper-$OS.gz
-	gunzip /tmp/haskell-language-server-wrapper.gz
-	mv /tmp/haskell-language-server-wrapper ~/.bin/
-	chmod +x ~/.bin/haskell-language-server-wrapper
-fi
-
 # Install Fira Code Font
 if ! fc-list | grep -q firacode; then
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip -O /tmp/fira-code-symbols.zip
