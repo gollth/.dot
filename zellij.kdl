@@ -21,6 +21,8 @@ keybinds clear-defaults=true {
         bind "Alt ." { ToggleFloatingPanes; }
         bind "Alt r" { SwitchToMode "RenameTab"; }
         bind "Alt f" { SwitchToMode "EnterSearch"; }
+        bind "Alt u" { Resize "Increase"; }
+        bind "Alt m" { Resize "Decrease"; }
     }
     entersearch {
         bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
