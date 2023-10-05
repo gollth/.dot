@@ -80,33 +80,6 @@ fi
 # Create ~/.bin folder if not yet present
 mkdir -p ~/.bin
 
-# Install Emacs
-if ! command -v emacs27 &>/dev/null; then
-	echo "Emacs NOT installed"
-	sudo add-apt-repository ppa:kelleyk/emacs
-	ensure-installed emacs27
-fi
-
-# Install Spacemacs
-[[ ! -d ~/.emacs.d ]] && git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d --branch develop
-[[ ! -d ~/.spacemacs.d ]] && git clone https://github.com/gollth/.spacemacs.d ~/.spacemacs.d --recursive
-[[ ! -f ~/.spacemacs ]] && ln -sf ~/.spacemacs.d/.spacemacs ~/.spacemacs
-[[ ! -f ~/.emacs.d/private/roslaunch-jump ]] && git clone https://github.com/Maverobot/roslaunch-jump ~/.emacs.d/private/roslaunch-jump
-if [ ! -d ~/.spacemacs.d/ccls/build ]; then
-	echo "Now building CCLS C/C++ Language Server"
-	pushd $(pwd)
-	cd ~/.spacemacs.d/ccls
-	if [ -d llvm ]; then rm -Rf llvm; fi
-	mkdir -p llvm && cd llvm || return
-	LLVM_BASENAME="clang+llvm-9.0.0-$(uname -m)-linux-gnu-ubuntu-$(lsb_release -rs)"
-	wget "https://releases.llvm.org/9.0.0/${LLVM_BASENAME}.tar.xz"
-	tar -xf "${LLVM_BASENAME}.tar.xz"
-	cd ..
-	cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="./llvm/${LLVM_BASENAME}"
-	cmake --build Release -- "-j$(nproc)"
-	cd $(popd)
-fi
-
 # Install Fira Code Font
 if ! fc-list | grep -q firacode; then
 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip -O /tmp/fira-code-symbols.zip
