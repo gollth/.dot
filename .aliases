@@ -6,6 +6,7 @@ alias zz=zellij
 alias za="zellij attach"
 
 alias vim=nvim
+alias watch='watch -n1'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
