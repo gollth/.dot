@@ -109,7 +109,7 @@ ln -s -f $DIR/p10k.$OS.zsh ~/.p10k.zsh
 ln -s -f $DIR/.functions ~/.functions
 ln -s -f $DIR/.aliases ~/.aliases
 ln -s -f $DIR/ips.py ~/.bin/ips
-ln -s -f $DIR/zellij.kdl ~/.config/zellij/config.kdl
+ln -s -f $DIR/zellij ~/.config/zellij
 ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
 [[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
