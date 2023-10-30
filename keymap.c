@@ -20,20 +20,20 @@
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
  * │   │   │   │   │   │   │       │   │ 4 │ 5 │ 6 │   │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ + │   │   │   │   │   │       │   │ 1 │ 2 │ 3 │   │ - │
+ * │ + │   │   │   │   │   │       │   │ 1 │ 2 │ 3 │ , │ - │
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
- *               │   ├───┐           ┌───┤ 0 │
+ *               │   ├───┐           ┌───┤ . │
  *               └───┤   ├───┐   ┌───┤   ├───┘
- *                   └───┤ ⊗ │   │ . ├───┘
+ *                   └───┤ ⊗ │   │ 0 ├───┘
  *                       └───┘   └───┘
  * Layer 2: Symbols
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │ [ │   │   │ ^ │ & │   │       │   │ ' │ * │   │ \ │ ] │
+ * │ [ │   │   │ ^ │ & │   │       │   │ ` │ * │   │ \ │ ] │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ < │   │   │ ~ │ @ │   │       │   │ " │ # │   │ : │ > │
+ * │ < │   │   │ # │ @ │   │       │   │ " │ ~ │   │ : │ > │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ + │   │   │ $ │ | │   │       │   │ ` │ % │   │ ? │ _ │
+ * │ + │   │   │ $ │ | │   │       │   │ ' │ % │   │ ? │ _ │
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
  *               │   ├───┐           ┌───┤   │
@@ -92,14 +92,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [1] = LAYOUT_split_3x6_3(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,                 XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,  XXXXXXX,
-        KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX, KC_MINUS,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,      KC_DOT, _______, KC_0
+        KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, KC_1, KC_2, KC_3, KC_COMM, KC_MINUS,
+                                   XXXXXXX, XXXXXXX, XXXXXXX,      KC_0, _______, KC_DOT
   ),
   // Symbol Layer
   [2] = LAYOUT_split_3x6_3(
-        KC_LBRC, XXXXXXX, XXXXXXX, KC_CIRC,  KC_AMPR, XXXXXXX,             XXXXXXX, KC_QUOT,  KC_ASTR, XXXXXXX,   KC_BSLS,  KC_RBRC,
-        KC_LABK, XXXXXXX, _______, KC_TILDE, KC_AT,   XXXXXXX,             XXXXXXX, KC_DQUO,  KC_HASH, _______,   KC_COLN,  KC_RABK,
-        KC_PLUS, XXXXXXX, XXXXXXX, KC_DLR,   KC_PIPE, XXXXXXX,             XXXXXXX, KC_GRAVE, KC_PERC, XXXXXXX,   KC_QUES,  KC_UNDS,
+        KC_LBRC, XXXXXXX, XXXXXXX, KC_CIRC,  KC_AMPR, XXXXXXX,             XXXXXXX, KC_GRAVE, KC_ASTR,  XXXXXXX,   KC_BSLS,  KC_RBRC,
+        KC_LABK, XXXXXXX, _______, KC_HASH,  KC_AT,   XXXXXXX,             XXXXXXX, KC_DQUO,  KC_TILDE, _______,   KC_COLN,  KC_RABK,
+        KC_PLUS, XXXXXXX, XXXXXXX, KC_DLR,   KC_PIPE, XXXXXXX,             XXXXXXX, KC_QUOT,  KC_PERC,  XXXXXXX,   KC_QUES,  KC_UNDS,
                                      _______,  _______, KC_EXLM,      XXXXXXX, XXXXXXX, XXXXXXX
   ),
   // Navigation Layer
