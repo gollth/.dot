@@ -58,9 +58,9 @@ if [[ $OS == "Linux" ]]; then
 	if ! command -v irust &>/dev/null; then
 		cargo install irust
 	fi
-
-	if ! command -v googler &>/dev/null; then
-		sudo googler -u # upgrade to 4.2.3
+	if ! command -v systemctl-tui &>/dev/null; then
+		cargo install systemctl-tui
+		sudo ln -s ~/.cargo/bin/systemctl-tui /usr/bin/systemctl-tui
 	fi
 
 fi
