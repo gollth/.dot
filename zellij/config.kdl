@@ -23,6 +23,7 @@ keybinds clear-defaults=true {
         bind "Alt f" { SwitchToMode "EnterSearch"; }
         bind "Alt u" { Resize "Increase"; }
         bind "Alt m" { Resize "Decrease"; }
+        bind "Alt e" { EditScrollback; }
     }
     entersearch {
         bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
@@ -30,7 +31,8 @@ keybinds clear-defaults=true {
     }
 
     search {
-        bind "Ctrl f" { SwitchToMode "Normal"; }
+        bind "Alt f" { SwitchToMode "Normal"; }
+        bind "Alt e" { EditScrollback; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
@@ -58,5 +60,6 @@ plugins {
 
 mouse_mode true
 copy_command "xclip -selection clipboard"
+copy_on_select true
 
 theme "nord"
