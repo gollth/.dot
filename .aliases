@@ -13,10 +13,7 @@ alias wips='watch ips'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
-    alias wifi='nmcli device wifi'
-    alias network='nmcli device'
     alias clip='xclip -selection c'
-    alias path='realpath'
     alias open='xdg-open'
     alias apt-search='apt-cache madison'
     alias apt-list='apt list -a'
@@ -25,17 +22,13 @@ if [[ $(uname -s) == "Linux" ]]; then
     alias rostidy='rosparam delete / && yes | rosnode cleanup'
     alias rosroot='cd ~/ros/'
     alias rosreset='source ~/ros/devel/setup.bash'
-    alias rosccc='~/.bin/sushi/ros-combine-compile-commands.py'
     alias rosbuild='roscheck . && catkin build && rosccc .'
     alias tf='ipython2 --classic --no-confirm-exit --no-banner -i ~/.dot/tf.init.py'
 
     alias tfecho='rosrun tf tf_echo'
     alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
-    alias controller-manager='rosrun rqt_controller_manager rqt_controller_manager'
-    alias ssh-ros="ssh -oHostKeyAlgorithms='ssh-rsa'"
 
     alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
-    alias robot-steering="rosrun rqt_robot_steering rqt_robot_steering"
     alias swap-clear='sudo swapoff -a; sudo swapon -a'
 
 elif [[ $(uname -s) == "Darwin" ]]; then
@@ -55,8 +48,3 @@ alias translate='trans'
 alias arduino='arduino-cli'
 
 alias traceroute='mtr -t'
-alias cheatty='CHTSH_QUERY_OPTIONS="T" cheat'   # no syntax-highlighting for TTY support
-
-alias tscp='termscp'
-
-alias lscam='rs-enumerate-devices | grep -A5 "Device"'
