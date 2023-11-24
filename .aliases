@@ -9,6 +9,7 @@ alias vim=nvim
 alias watch='watch -n1'
 alias df='duf --output mountpoint,size,avail,usage /'
 alias wdf='watch duf --output mountpoint,size,usage,avail /'
+alias wips='watch ips'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
