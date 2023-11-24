@@ -10,8 +10,6 @@ alias watch='watch -n1'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
-    alias emacs='emacs27 -nw'
-    alias e='emacs27 -nw'
     alias wifi='nmcli device wifi'
     alias network='nmcli device'
     alias clip='xclip -selection c'
@@ -41,8 +39,6 @@ elif [[ $(uname -s) == "Darwin" ]]; then
     # Aliases specialied for OSX
     alias rosetta='arch -x86_64'
     alias brew='rosetta brew'
-    alias emacs='rosetta emacs -nw'
-    alias e='rosetta emacs -nw'
 
 fi
 

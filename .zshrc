@@ -63,7 +63,6 @@ if [[ -d "$HOME/Library/Python" ]] ; then
 fi
 
 export LANG=en_US.UTF-8
-export EDITOR='emacs26 -nw'
 export TERM=xterm-256color
 export ROSCONSOLE_FORMAT='▏${severity}▕ ${node} ⟩ ${function}() ⟩ L${line} ⟫ ${message}'
 
