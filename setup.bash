@@ -27,6 +27,7 @@ ensure-installed jq
 ensure-installed autotrash
 ensure-installed googler
 ensure-installed curl
+ensure-installed duf
 
 # Update PIP if required
 pip install --upgrade pip
