@@ -23,6 +23,15 @@ mkdircd() {
   cd $1
 }
 
+symbol() {
+  if ! command -v uni &> /dev/null ; then
+    echo "Program `uni` not installed" >&2
+    return 1
+  fi
+
+  uni -f "%(char)%(wide_padding)     %(name)" print all | tail -n +2 | fzf | awk '{print $1}' | xclip -sel clip
+}
+
 ensure-installed() {
     cmd=$1
     installer=${2:-$1}

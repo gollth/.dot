@@ -63,6 +63,13 @@ if [[ $OS == "Linux" ]]; then
 		sudo ln -s ~/.cargo/bin/systemctl-tui /usr/bin/systemctl-tui
 	fi
 
+	# Uni
+	if ! command -v unipicker &>/dev/null; then
+		wget -O- https://github.com/arp242/uni/releases/download/v2.5.1/uni-v2.5.1-linux-amd64.gz -O /tmp/uni.gz
+		gunzip -dvc /tmp/uni.gz >~/.bin/uni
+		chmod +x ~/.bin/uni
+	fi
+
 fi
 
 if [[ $OS == "macOS" ]]; then
@@ -72,6 +79,7 @@ if [[ $OS == "macOS" ]]; then
 	ensure-installed coreutils # for GNU ls
 	ensure-installed exa
 	ensure-installed trash
+	ensure-installed uni
 
 	# Install XCode tools
 	xcode-select --install
