@@ -29,7 +29,14 @@ symbol() {
     return 1
   fi
 
-  uni -f "%(char)%(wide_padding)     %(name)" print all | tail -n +2 | fzf | awk '{printf $1}' | xclip -sel clip
+  if [[ $(uname -s) == "Linux" ]]; then
+    uni -f "%(char)%(wide_padding)     %(name)" print all | tail -n +2 | fzf | awk '{printf $1}' | xclip -sel clip
+  elif [[ $(uname -s) == "Darwin" ]]; then
+    uni -f "%(char)%(wide_padding)     %(name)" print all | tail -n +2 | fzf | awk '{printf $1}' | pbcopy
+  else
+  	echo "Unsupported OS $(uname -s)"
+	  exit 1
+  fi
 }
 
 ensure-installed() {
