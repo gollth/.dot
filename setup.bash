@@ -123,6 +123,7 @@ ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
 [[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
 mkdir -p ~/.config/lazygit/ && ln -sf $DIR/lazygit.yaml ~/.config/lazygit/config.yml
+mkdir -p ~/.config/lazydocker/ && ln -sf $DIR/lazydocker.yaml ~/.config/lazydocker/config.yml
 
 # Install Fuzzy finding
 if [[ ! -d ~/.fzf ]]; then

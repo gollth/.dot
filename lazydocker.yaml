@@ -1,0 +1,9 @@
+gui:
+  theme:
+    activeBorderColor: [cyan, bold]
+    inactiveBorderColor: [white]
+
+  showBottomLine: false
+
+  screenMode: half
+  containerStatusHealthStyle: icon

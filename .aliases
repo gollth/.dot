@@ -5,6 +5,7 @@ alias j=z
 alias zz=zellij
 alias za="zellij attach"
 
+alias wd=lazydocker
 alias e=nvim
 alias vim=nvim
 alias watch='watch -n1'
