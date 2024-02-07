@@ -1,7 +1,7 @@
 /*
  * Layer 0: Alphas
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │ { │ Q │ W │ E │ R │ T │       │ Y │ U │ I │ O │ P │ } │
+ * │{,[│ Q │ W │ E │ R │ T │       │ Y │ U │ I │ O │ P │},]│
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
  * │ ( │ A │ S │ D │ F │ G │       │ H │ J │ K │ L │ ; │ ) │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
@@ -16,24 +16,24 @@
  *
  * Layer 1: Numbers
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │   │   │   │   │   │   │       │   │ 7 │ 8 │ 9 │   │   │
+ * │   │   │   │ * │ + │   │       │   │ 7 │ 8 │ 9 │   │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │   │   │   │   │   │   │       │   │ 4 │ 5 │ 6 │   │   │
+ * │   │   │   │ , │ . │   │       │   │ 4 │ 5 │ 6 │   │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ + │   │   │   │   │   │       │   │ 1 │ 2 │ 3 │ , │ - │
+ * │ + │   │   │ / │ - │   │       │   │ 1 │ 2 │ 3 │   │ - │
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
- *               │   ├───┐           ┌───┤ . │
- *               └───┤   ├───┐   ┌───┤   ├───┘
- *                   └───┤ ⊗ │   │ 0 ├───┘
+ *               │   ├───┐           ┌───┤SPC│
+ *               └───┤SPC├───┐   ┌───┤   ├───┘
+ *                   └───┤ ⊗ │   │   ├───┘
  *                       └───┘   └───┘
  * Layer 2: Symbols
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │ [ │   │   │ ^ │ & │   │       │   │ ` │ * │   │ \ │ ] │
+ * │   │   │   │   │   │   │       │ ^ │ ' │ * │ $ │ | │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ < │   │   │ # │ @ │   │       │   │ " │ ~ │   │ : │ > │
+ * │   │   │   │   │   │   │       │   │ " │ # │ @ │ ~ │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ + │   │   │ $ │ | │   │       │   │ ' │ % │   │ ? │ _ │
+ * │   │   │   │   │   │   │       │   │ ` │ % │ & │ \ │   │
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
  *               │   ├───┐           ┌───┤   │
@@ -42,11 +42,11 @@
  *                       └───┘   └───┘
  * Layer 3: Navigation
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │   │   │   │   │   │   │       │   │PGU│   │   │   │   │
+ * │   │   │   │   │   │   │       │   │   │   │   │   │   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │   │HOM│   │   │   │   │       │ ◀ │ ▼ │ ▲ │ ▶ │END│   │
+ * │   │HOM│   │PGU│PDN│   │       │ ◀ │ ▼ │ ▲ │ ▶ │END│   │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │   │C-Z│C-X│C-C│C-V│   │       │   │PGD│   │   │   │   │
+ * │   │C-Z│C-X│C-C│C-V│   │       │   │   │   │   │   │   │
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
  *               │   ├───┐           ┌───┤   │
@@ -57,13 +57,13 @@
  * ┌───┬───┬───┬───┬───┬───┬       ┌───┬───┬───┬───┬───┬───┐
  * │   │   │   │   │   │   │       │F12│F7 │F8 │F9 │   │   │
  * ├───┼───┼───┼───┼───┼───┼       ├───┼───┼───┼───┼───┼───┤
- * │   │   │⏮ │🔉 │🔊 │⏭ │       │F11│F4 │F5 │F6 │   │   │
+ * │   │   │⏮  │🔉 │🔊 │⏭  │       │F11│F4 │F5 │F6 │   │   │
  * ├───┼───┼───┼───┼───┼───┼       ├───┼───┼───┼───┼───┼───┤
  * │   │   │   │   │   │   │       │F10│F1 │F2 │F3 │   │   │
  * └───┴───┴───┴───┴───┴───┴       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
  *               │ ⊗ ├───┐           ┌───┤🔇 │
- *               └───┤   ├───┐   ┌───┤⏯ ├───┘
+ *               └───┤   ├───┐   ┌───┤⏯  ├───┘
  *                   └───┤   │   │   ├───┘
  *                       └───┘   └───┘
  */
@@ -77,28 +77,27 @@
 #define HRM_S       LALT_T(KC_S)
 #define HRM_L       RALT_T(KC_L)
 #define HRM_A       LGUI_T(KC_A)
-#define HRM_SEMI    RGUI_T(KC_SCLN)
-
+#define HRM_COLN   KC_COLON
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Base Layer
   [0] = LAYOUT_split_3x6_3(
         KC_LCBR,  KC_Q,  KC_W,  KC_E,  KC_R, KC_T,                  KC_Y,  KC_U,    KC_I,   KC_O,     KC_P, KC_RCBR,
-        KC_LPRN, HRM_A, HRM_S, HRM_D, HRM_F, KC_G,                  KC_H, HRM_J,   HRM_K,  HRM_L, HRM_SEMI, KC_RPRN,
+        KC_LPRN, HRM_A, HRM_S, HRM_D, HRM_F, KC_G,                  KC_H, HRM_J,   HRM_K,  HRM_L, KC_COLON, KC_RPRN,
         KC_EQUAL, KC_Z,  KC_X,  KC_C,  KC_V, KC_B,                  KC_N,  KC_M, KC_COMM, KC_DOT,  KC_SLSH, KC_MINUS,
                      LT(4,KC_ESC), KC_SPC, LT(1,KC_TAB),     LT(2,KC_ENT), LT(3,KC_BSPC), KC_DEL
   ),
   // Number Layer
   [1] = LAYOUT_split_3x6_3(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX, XXXXXXX,
-        XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,                 XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,  XXXXXXX,
-        KC_PLUS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, KC_1, KC_2, KC_3, KC_COMM, KC_MINUS,
-                                   XXXXXXX, XXXXXXX, XXXXXXX,      KC_0, _______, KC_DOT
+        XXXXXXX, XXXXXXX, XXXXXXX, KC_ASTR, KC_PLUS, XXXXXXX,                 XXXXXXX, KC_7, KC_8, KC_9, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, _______, KC_COMM,  KC_DOT, XXXXXXX,                 XXXXXXX, KC_4, KC_5, KC_6, XXXXXXX,  XXXXXXX,
+        KC_PLUS, XXXXXXX, XXXXXXX, KC_SLSH,KC_MINUS, XXXXXXX,                 XXXXXXX, KC_1, KC_2, KC_3, XXXXXXX, KC_MINUS,
+                                   XXXXXXX, _______, XXXXXXX,      KC_0, _______, KC_SPC
   ),
   // Symbol Layer
   [2] = LAYOUT_split_3x6_3(
         KC_LBRC, XXXXXXX, XXXXXXX, KC_CIRC,  KC_AMPR, XXXXXXX,             XXXXXXX, KC_GRAVE, KC_ASTR,  XXXXXXX,   KC_BSLS,  KC_RBRC,
-        KC_LABK, XXXXXXX, _______, KC_HASH,  KC_AT,   XXXXXXX,             XXXXXXX, KC_DQUO,  KC_TILDE, _______,   KC_COLN,  KC_RABK,
+        KC_LABK, XXXXXXX, _______, KC_HASH,  KC_AT,   XXXXXXX,             XXXXXXX, KC_DQUO,  KC_TILDE, _______,   KC_SCLN,  KC_RABK,
         KC_PLUS, XXXXXXX, XXXXXXX, KC_DLR,   KC_PIPE, XXXXXXX,             XXXXXXX, KC_QUOT,  KC_PERC,  XXXXXXX,   KC_QUES,  KC_UNDS,
                                      _______,  _______, KC_EXLM,      XXXXXXX, XXXXXXX, XXXXXXX
   ),
@@ -117,7 +116,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, KC_MPLY, KC_MUTE
   )
 };
-
 
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
