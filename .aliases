@@ -1,5 +1,7 @@
+alias watch='watch -n1'
 alias ll='exa -alh --git --color-scale'
 alias l=ll
+alias wll='watch exa -alh --git --color=never'
 
 alias zz=zellij
 alias za="zellij attach"
@@ -7,7 +9,6 @@ alias za="zellij attach"
 alias wd=lazydocker
 alias e=nvim
 alias vim=nvim
-alias watch='watch -n1'
 alias df='duf --output mountpoint,size,avail,usage /'
 alias wdf='watch duf --output mountpoint,size,usage,avail /'
 alias wips='watch ips'
