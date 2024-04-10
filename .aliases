@@ -57,3 +57,11 @@ alias translate='trans'
 alias arduino='arduino-cli'
 
 alias traceroute='mtr -t'
+
+alias fmplot='cargo run --manifest-path ~/fleet/fleet_manager/fmplot/Cargo.toml --'
+alias fmrepl='cargo run --manifest-path ~/fleet/fleet-repl/Cargo.toml -- --config-dir /tmp/fleet-repl/'
+alias fm='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- --config /tmp/fleet-repl/fm_config.toml'
+alias fm='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- '
+alias fmrun='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- run --config /tmp/fleet-repl/fm_config.toml'
+alias fmtest='cargo nextest list --cargo-quiet -E "kind(test)" | tail -n +2 | fzf | FLEET_STABLE_INTEGRATION_TEST_MQTT_PORT=1883 xargs -I{} cargo nextest run -E "test({})" --no-capture'
+alias fmtrace='cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fmtrace'
