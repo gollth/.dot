@@ -55,7 +55,6 @@ source $ZSH/oh-my-zsh.sh
 [ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
 [ -d "$HOME/.cabal/bin" ] && PATH="$HOME/.cabal/bin:$PATH"
 [ -d "$HOME/.ghcup/bin" ] && PATH="$HOME/.ghcup/bin:$PATH"
-[ -d /usr/share/autojump ] && source /usr/share/autojump/autojump.sh
 
 if [[ -d "$HOME/Library/Python" ]] ; then
     # Add python local libraries to Path (OSX)
