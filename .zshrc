@@ -72,6 +72,7 @@ source ~/.aliases
 source ~/.functions
 
 eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # ROS Setup
 [ -d /opt/ros ]       && source $(ls -d /opt/ros/* | tail -n 1)/setup.zsh
