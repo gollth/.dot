@@ -20,7 +20,6 @@ keybinds clear-defaults=true {
         bind "Alt )" { GoToNextTab; }
         bind "Alt ." { ToggleFloatingPanes; }
         bind "Alt r" { SwitchToMode "RenameTab"; }
-        bind "Alt f" { SwitchToMode "EnterSearch"; }
         bind "Alt u" { Resize "Increase"; }
         bind "Alt m" { Resize "Decrease"; }
         bind "Alt e" { EditScrollback; }
@@ -31,7 +30,6 @@ keybinds clear-defaults=true {
     }
 
     search {
-        bind "Alt f" { SwitchToMode "Normal"; }
         bind "Alt e" { EditScrollback; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
