@@ -12,6 +12,13 @@ alias vim=nvim
 alias df='duf --output mountpoint,size,avail,usage /'
 alias wdf='watch duf --output mountpoint,size,usage,avail /'
 alias wips='watch ips'
+alias ff='fzf | clip'
+
+
+alias docker-search='docker ps --format "{{.ID}}    {{.Names}}" | fzf | awk '\''BEGIN {ORS=""} { print $1; }'\'''
+alias docker-cid='docker-search | clip'
+alias docker-exec='docker exec -it $(docker-search) bash'
+alias docker-stop-all='docker stop $(docker ps -aq) && docker rm $(docker ps -aq)'
 
 if [[ $(uname -s) == "Linux" ]]; then
     # Aliases specialied for Linux
