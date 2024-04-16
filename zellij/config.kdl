@@ -59,6 +59,6 @@ plugins {
 mouse_mode true
 copy_command "xclip -selection clipboard"
 copy_on_select true
-scrollback_editor "nvim +$"
+scrollback_editor "nvim -c %s/^\\s*$//e +noh +$"
 
 theme "nord"
