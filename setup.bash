@@ -28,6 +28,7 @@ ensure-installed autotrash
 ensure-installed googler
 ensure-installed curl
 ensure-installed duf
+ensure-installed kitty
 
 # Update PIP if required
 pip install --upgrade pip
@@ -119,6 +120,7 @@ ln -s -f $DIR/.functions ~/.functions
 ln -s -f $DIR/.aliases ~/.aliases
 ln -s -f $DIR/ips.py ~/.bin/ips
 ln -s -f $DIR/zellij ~/.config/zellij
+ln -s -f $DIR/kitty.conf ~/.config/kitty/kitty.conf
 ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
 [[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
