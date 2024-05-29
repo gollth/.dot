@@ -14,6 +14,9 @@ alias wdf='watch duf --output mountpoint,size,usage,avail /'
 alias wips='watch ips'
 alias ff='fzf | clip'
 
+alias colemak='qmk flash -km colemak'
+alias qwerty='qmk flash -km qwerty'
+
 
 alias docker-search='docker ps --format "{{.ID}}    {{.Names}}" | fzf | awk '\''BEGIN {ORS=""} { print $1; }'\'''
 alias docker-cid='docker-search | clip'
