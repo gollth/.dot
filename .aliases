@@ -14,7 +14,6 @@ alias wdf='watch duf --output mountpoint,size,usage,avail /'
 alias wips='watch ips'
 alias ff='fzf | clip'
 
-
 alias docker-search='docker ps --format "{{.ID}}    {{.Names}}" | fzf | awk '\''BEGIN {ORS=""} { print $1; }'\'''
 alias docker-cid='docker-search | clip'
 alias docker-exec='docker exec -it $(docker-search) bash'
