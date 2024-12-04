@@ -1,8 +1,3 @@
-whatlibs() {
-    # needs sudo apt install apt-file
-    ldd $1 | awk '/=>/{print $(NF-1)}' | while read n; do dpkg-query -S $n; done | sed 's/^\([^:]\+\):.*$/\1/' | uniq
-}
-
 trash() {
     if [[ $(uname -s) == "Linux" ]] ; then
         autotrash -d 30 --trash-path=~/.local/share/Trash
@@ -90,32 +85,6 @@ cmakemake() {
     ls && cd ..
 }
 
-rosbridge() {
-    PORT=${1:-8888}
-    roslaunch rosbridge_server rosbridge_websocket.launch port:=$PORT
-}
-
-rosws() {
-    if [[ $# -eq 0 ]] ; then
-        if [[ ! -f ~/.rosws ]] ; then
-            echo "Currently no ROS workspace setup"
-            return 0
-        fi
-        echo "Current ROS workspace: " ~/$(cat ~/.rosws)
-        [[ -f ~/$1/devel/setup.zsh ]] && source ~/$1/devel/setup.zsh
-        return 0
-    fi
-
-    if [[ ! -e ~/$1 ]] ; then
-        echo "Could not set $1 as ROS workspace because it does not exist"
-        return 1
-    fi
-
-    echo $1 > ~/.rosws
-    [[ -f ~/$1/devel/setup.zsh ]] && source ~/$1/devel/setup.zsh
-    echo "Setting ROS workspace: " ~/$(cat ~/.rosws)
-}
-
 roshost() {
     if [[ $# -ne 0 ]] ; then
         ## Esimate a "good" IP (one not from a docker tunnel adapter and not localhost)
@@ -128,17 +97,6 @@ roshost() {
     echo "Current ROS Host: $ROS_MASTER_URI"
     echo "Current ROS IP  : $ROS_IP"
     return 0
-}
-
-ros-actionlib-state() {
-  if [[ $@ -eq 0 ]]; then
-    echo "Usage: ros-actionlib-state N"
-    echo ""
-    echo "  N:   integer from 0 to 8 to lookup in 'actionlib.CommState'"
-    return 1
-  fi
-
-  python -c "import actionlib; print [k for k,i in actionlib.CommState.__dict__.iteritems() if i == $1]"
 }
 
 # simple CLI calculator function

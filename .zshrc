@@ -44,7 +44,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     git
     fzf
-    nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -55,8 +54,6 @@ source $ZSH/oh-my-zsh.sh
 [ -d "$HOME/.bin" ]       && PATH="$HOME/.bin:$PATH"
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.cargo/bin" ] && PATH="$HOME/.cargo/bin:$PATH"
-[ -d "$HOME/.cabal/bin" ] && PATH="$HOME/.cabal/bin:$PATH"
-[ -d "$HOME/.ghcup/bin" ] && PATH="$HOME/.ghcup/bin:$PATH"
 
 if [[ -d "$HOME/Library/Python" ]] ; then
     # Add python local libraries to Path (OSX)
@@ -80,11 +77,6 @@ eval "$(zoxide init --cmd cd zsh)"
 [ -d /opt/ros ]       && source $(ls -d /opt/ros/* | tail -n 1)/setup.zsh
 [ -f $HOME/.roshost ] && source $HOME/.roshost;
 [ -f $HOME/.rosws ]   && source $HOME/$(cat $HOME/.rosws)/devel/setup.zsh;
-
-# NVM Setup
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
