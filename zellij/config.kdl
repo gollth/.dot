@@ -7,8 +7,7 @@ keybinds clear-defaults=true {
         bind "Alt /" { NewPane "Right"; }
         bind "Alt -" { NewPane "Down"; }
         bind "Alt d" { ToggleFocusFullscreen; }
-        bind "Alt q" { CloseFocus; }
-        bind "Alt Q" { CloseTab; }
+        bind "Alt Q" { CloseFocus; }
         bind "Alt z" { Detach; }
         bind "Alt H" { MovePane "Left"; }
         bind "Alt L" { MovePane "Right"; }
