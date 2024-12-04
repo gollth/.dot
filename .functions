@@ -146,3 +146,159 @@ portscan() {
     fi
     nmap $@
 }
+
+fmq() {
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -h)
+        local HOST_="$2"
+        shift
+        shift
+        ;;
+      -p)
+        local PORT="$2"
+        shift
+        shift
+        ;;
+      -f)
+        local FILTER="$2"
+        shift
+        shift
+        ;;
+      -c)
+        local COMPACT="-c"
+        shift
+        ;;
+      vehicles) 
+        local TOPIC="fleet/+/+/vehicles"
+        shift
+        ;;
+      vehicle-names)
+        shift
+        local TOPIC="fleet/+/+/vehicles"
+        local FILTER="map(.vehicleId)"
+        ;;
+      orders)
+        local TOPIC="fleet/+/+/orders"
+        shift
+        ;;
+      resources)
+        local TOPIC="fleet/+/+/resources"
+        shift
+        ;;
+      notifications)
+        local TOPIC="fleet/+/+/notifications"
+        shift
+        ;;
+      missions)
+        local TOPIC="fleet/+/+/missions"
+        shift
+        ;;
+      state)
+        shift
+        local TOPIC="fleet/+/+/$1/state"
+        shift
+        ;;
+      order)
+        shift
+        local TOPIC="fleet/+/+/$1/order"
+        shift
+        ;;
+      alloc)
+        shift
+        local TOPIC="fleet/+/+/vehicles"
+        local FILTER=".[] | select(.vehicleId == \"$1\") | .allocatedResources | map(.id)"
+        shift
+        ;;
+      actions)
+        shift
+        local TOPIC="fleet/+/+/$1/instantActions"
+        shift
+        ;;
+      vis)
+        shift
+        local TOPIC="fleet/+/+/$1/visualization"
+        shift
+        ;;
+      li-order)
+        shift
+        local TOPIC="li/+/order/state"
+        local FILTER="select(.orderId == \"$1\")"
+        shift
+        ;;
+      *)
+        echo "Unsupported topic, use either 'vehicles', 'vehicle-names', 'orders', 'resources', 'notificatons', 'missions', 'state', 'order', 'alloc', 'actions' or 'vis'"
+        return 1
+        ;;
+    esac
+  done
+
+  if [[ -z $TOPIC ]]; then 
+    echo "Usage: fmq [OPTIONS] TOPIC [FILTER]"
+    echo ""
+    echo "OPTIONS:"
+    echo "     -h HOST           - hostname of the MQTT broker (localhost)"
+    echo "     -p PORT           - port of the MQTT broker (1883)"
+    echo "     -f FILTER         - filter expression passed down to jq (.)"      
+    echo "     -c                - print JSON values in compact/oneline form"
+    echo "TOPIC:"
+    echo "     vehicles          - all currently registered vehicles"
+    echo "     vehicles-names    - names of all currently registered vehicles"
+    echo "     orders            - all currently orders from the FM"
+    echo "     resources         - the active FM map layout"
+    echo "     notificatons      - global errors & warning"
+    echo "     missions          - UI missions"
+    echo "     state <VEHICLE>   - the state of a vehicle with a given name"
+    echo "     order <VEHICLE>   - the current order of a vehicle with a given name"
+    echo "     alloc <VEHICLE>   - the allocated resources of a vehicle with a given name"
+    echo "     actions <VEHICLE> - the currently active instant actions of a vehicle with a given name"
+    echo "     vis <VEHICLE>     - the visualzation topic of a vehicle with a given name"
+    echo "     li-order <ORDER>  - the state of an LI order with the given ID"
+    echo ""
+    return 1
+  fi
+
+  mqtt sub -h ${HOST_:-localhost} -p ${PORT:-1883} -t $TOPIC | jq $COMPACT "${FILTER:-.}"
+}
+
+
+li-order() {
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -h)
+        local HOST="$2"
+        shift
+        shift
+        ;;
+      -p)
+        local PORT="$2"
+        shift
+        shift
+        ;;
+      -o)
+        local ORDER_ID="$2"
+        shift
+        shift
+        ;;
+      *)
+        local GOAL="$1"
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z $GOAL ]]; then
+    echo "Usage: li-order [OPTIONS] GOAL"
+    echo ""
+    echo "OPTIONS:"
+    echo "     -h HOST           - hostname of the MQTT broker (localhost)"
+    echo "     -p PORT           - port of the MQTT broker (1883)"
+    echo "     -o ORDER_ID       - ID of the order to create (foo)"
+    echo "GOAL:   node name of where to drive to"
+    return 1
+  fi
+  local ORDER=${ORDER_ID:-$(petname -a --lists small)}
+  # (mqtt sub -h ${HOST:-localhost} -p ${PORT:-1883} -t li/v1.4.0/order/update/+ | jq '.') &
+  mqtt pub -q 1 -h ${HOST:-localhost} -p ${PORT:-1883} -t li/v1.4.0/order/create -m "{\"messageId\": 101, \"orderId\": \"${ORDER}\", \"priority\": 0, \"amrType\": \"ArculeeM\", \"timestamp\": $(date +%s) }"
+  mqtt pub -q 1 -h ${HOST:-localhost} -p ${PORT:-1883} -t li/v1.4.0/order/update -m "{\"messageId\": 102, \"orderId\": \"${ORDER}\", \"priority\": 0, \"overrideTasks\": true, \"orderComplete\": true, \"tasks\": [{\"tp\": \"DRIVE\", \"taskId\": \"${ORDER}_drive_${GOAL}\", \"location\": \"$GOAL\"}], \"timestamp\": $(date +%s) }"
+}
