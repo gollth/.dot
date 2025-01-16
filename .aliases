@@ -1,10 +1,11 @@
+alias zz='source ~/.zshrc'
+alias za='source ~/.aliases'
+
 alias watch='watch -n1'
 alias ll='exa -alh --git --color-scale'
 alias l=ll
 alias wll='watch exa -alh --git --color=never'
-
-alias zz=zellij
-alias za="zellij attach"
+alias wt='watch exa -alhT --git --color=never'
 
 alias wd=lazydocker
 alias e=nvim
@@ -25,42 +26,33 @@ if [[ $(uname -s) == "Linux" ]]; then
     alias open='xdg-open'
     alias apt-search='apt-cache madison'
     alias apt-list='apt list -a'
-
-    # ROS Aliases
-    alias rostidy='rosparam delete / && yes | rosnode cleanup'
-    alias rosroot='cd ~/ros/'
-    alias rosreset='source ~/ros/devel/setup.bash'
-    alias rosbuild='roscheck . && catkin build && rosccc .'
-    alias tf='ipython2 --classic --no-confirm-exit --no-banner -i ~/.dot/tf.init.py'
-
-    alias tfecho='rosrun tf tf_echo'
-    alias tftree='rosrun rqt_tf_tree rqt_tf_tree'
-
-    alias dynamic-reconfigure="rosrun rqt_reconfigure rqt_reconfigure"
     alias swap-clear='sudo swapoff -a; sudo swapon -a'
 
 elif [[ $(uname -s) == "Darwin" ]]; then
     # Aliases specialied for OSX
     alias rosetta='arch -x86_64'
-    alias brew='rosetta brew'
-
 fi
 
-alias pcp="rsync --progress"   # progress copy
-alias google="googler"
-alias g="googler"
-
-alias ipython='ipython --no-banner --classic'
-alias ipython3='ipython3 --no-banner --classic'
+alias ipython='ipython3 --no-banner'
+alias ipython3='ipython3 --no-banner'
 alias translate='trans'
 alias arduino='arduino-cli'
 
 alias traceroute='mtr -t'
 
+# Fleet
+alias lifplot='cargo run --manifest-path ~/fleet/fleet_manager/lifplot/Cargo.toml --'
 alias fmplot='cargo run --manifest-path ~/fleet/fleet_manager/fmplot/Cargo.toml --'
+alias fm='FLEET_MANAGER_LOG=debug  cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --all-features --bin fleet_manager --'
 alias fmrepl='cargo run --manifest-path ~/fleet/fleet-repl/Cargo.toml -- --config-dir /tmp/fleet-repl/'
-alias fm='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- --config /tmp/fleet-repl/fm_config.toml'
-alias fm='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- '
-alias fmrun='FLEET__FLEET_MANAGER__LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- run --config /tmp/fleet-repl/fm_config.toml'
-alias fmtest='cargo nextest list --cargo-quiet -E "kind(test)" | tail -n +2 | fzf | FLEET_STABLE_INTEGRATION_TEST_MQTT_PORT=1883 xargs -I{} cargo nextest run -E "test({})" --no-capture'
-alias fmtrace='cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fmtrace'
+alias fmrun='FLEET_MANAGER_LOG=info cargo run --manifest-path ~/fleet/fleet_manager/fleet_manager/Cargo.toml --bin fleet_manager -- run --config /tmp/fleet-repl/fm_config.toml'
+alias fmtest='cargo nextest list --cargo-quiet --profile integration | tail -n +2 | fzf | FLEET_STABLE_INTEGRATION_TEST_MQTT_PORT=1883 FLEET_MANAGER_LOG=info xargs -I{} cargo nextest run --profile integration -E "test(={})" --no-capture'
+
+alias foxglove='docker build -t fleet-foxglove -f ~/fleet/fleet_foxglove/Dockerfile ~/fleet && docker run --net=host --rm -d -it fleet-foxglove'
+
+alias fury='cargo run --manifest-path ~/fleet/fury/Cargo.toml --'
+
+alias cnl="cargo nextest list"
+alias cnr='cargo nextest run'
+
+alias k='kubectl'
