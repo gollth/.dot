@@ -26,7 +26,7 @@ keybinds clear-defaults=true {
 
     search {
         bind "Alt e" { EditScrollback; }
-        bind "Super c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
         bind "n" { Search "down"; }
@@ -35,7 +35,7 @@ keybinds clear-defaults=true {
     }
 
     renametab {
-        bind "Super c" { SwitchToMode "Normal"; }
+        bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
     shared_except "normal" {

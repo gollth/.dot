@@ -4,12 +4,12 @@ DIR=$(dirname $(readlink -e $0))
 source $DIR/.functions
 
 if [[ $(uname -s) == "Linux" ]]; then
-	OS=Linux
+  OS=Linux
 elif [[ $(uname -s) == "Darwin" ]]; then
-	OS=macOS
+  OS=macOS
 else
-	echo "Unsupported OS $(uname -s)"
-	exit 1
+  echo "Unsupported OS $(uname -s)"
+  exit 1
 fi
 
 # Install ZSH and OH-MY-ZSH
@@ -40,51 +40,51 @@ pip3 install --user ipython
 
 # Rust
 if ! command cargo &>/dev/null; then
-	echo "Installing Rust & Cargo now"
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  echo "Installing Rust & Cargo now"
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
 if [[ $OS == "Linux" ]]; then
-	ensure-installed python3-dev
-	ensure-installed powerline
-	ensure-installed trash-cli
+  ensure-installed python3-dev
+  ensure-installed powerline
+  ensure-installed trash-cli
 
-	# Install find-fd
-	if ! command -v fd &>/dev/null; then
-		cargo install fd-find
-	fi
+  # Install find-fd
+  if ! command -v fd &>/dev/null; then
+    cargo install fd-find
+  fi
 
-	if ! command -v exa &>/dev/null; then
-		cargo install exa
-	fi
-	if ! command -v irust &>/dev/null; then
-		cargo install irust
-	fi
-	if ! command -v systemctl-tui &>/dev/null; then
-		cargo install systemctl-tui
-		sudo ln -s ~/.cargo/bin/systemctl-tui /usr/bin/systemctl-tui
-	fi
+  if ! command -v exa &>/dev/null; then
+    cargo install exa
+  fi
+  if ! command -v irust &>/dev/null; then
+    cargo install irust
+  fi
+  if ! command -v systemctl-tui &>/dev/null; then
+    cargo install systemctl-tui
+    sudo ln -s ~/.cargo/bin/systemctl-tui /usr/bin/systemctl-tui
+  fi
 
-	# Uni
-	if ! command -v unipicker &>/dev/null; then
-		wget -O- https://github.com/arp242/uni/releases/download/v2.5.1/uni-v2.5.1-linux-amd64.gz -O /tmp/uni.gz
-		gunzip -dvc /tmp/uni.gz >~/.bin/uni
-		chmod +x ~/.bin/uni
-	fi
+  # Uni
+  if ! command -v unipicker &>/dev/null; then
+    wget -O- https://github.com/arp242/uni/releases/download/v2.5.1/uni-v2.5.1-linux-amd64.gz -O /tmp/uni.gz
+    gunzip -dvc /tmp/uni.gz >~/.bin/uni
+    chmod +x ~/.bin/uni
+  fi
 
 fi
 
 if [[ $OS == "macOS" ]]; then
-	ensure-installed ip iproute2mac # for IP utils
-	ensure-installed watch
-	ensure-installed fd
-	ensure-installed coreutils # for GNU ls
-	ensure-installed exa
-	ensure-installed trash
-	ensure-installed uni
+  ensure-installed ip iproute2mac # for IP utils
+  ensure-installed watch
+  ensure-installed fd
+  ensure-installed coreutils # for GNU ls
+  ensure-installed exa
+  ensure-installed trash
+  ensure-installed uni
 
-	# Install XCode tools
-	xcode-select --install
+  # Install XCode tools
+  xcode-select --install
 fi
 
 # Create ~/.bin folder if not yet present
@@ -92,9 +92,9 @@ mkdir -p ~/.bin
 
 # Install Fira Code Font
 if ! fc-list | grep -q firacode; then
-	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip -O /tmp/fira-code-symbols.zip
-	sudo unzip -o /tmp/fira-code-symbols.zip -d /usr/share/fonts/opentype/
-	sudo fc-cache -f -v # Refresh the font cache
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip -O /tmp/fira-code-symbols.zip
+  sudo unzip -o /tmp/fira-code-symbols.zip -d /usr/share/fonts/opentype/
+  sudo fc-cache -f -v # Refresh the font cache
 fi
 
 # Install OH MY ZSH & powerlevel10k
@@ -121,6 +121,7 @@ ln -s -f $DIR/.aliases ~/.aliases
 ln -s -f $DIR/ips.py ~/.bin/ips
 ln -s -f $DIR/zellij ~/.config/zellij
 ln -s -f $DIR/kitty.conf ~/.config/kitty/kitty.conf
+ln -s -f $DIR/kitty-macos-launch-services-cmdline ~/.config/kitty/macos-launch-services-cmdline
 ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
 [[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
@@ -129,8 +130,8 @@ mkdir -p ~/.config/lazydocker/ && ln -sf $DIR/lazydocker.yaml ~/.config/lazydock
 
 # Install Fuzzy finding
 if [[ ! -d ~/.fzf ]]; then
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install --no-update-rc --key-bindings --completion
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --no-update-rc --key-bindings --completion
 fi
 
 zsh # Restart ZSH with new config
