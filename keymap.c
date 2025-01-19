@@ -1,5 +1,5 @@
 /*
- * Layer 0: QWERTY
+ * Layer 0: QWERTY (Linux)
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
  * │{,[│ Q │ W │ E │ R │ T │       │ Y │ U │ I │ O │ P │},]│
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
@@ -13,13 +13,13 @@
  *                 5 └───┤TAB│   │ENT├───┘
  *                       └───┘   └───┘ 4
  *                         2       3
- * Layer 1: Colemak
+ * Layer 1: QWERTY (Mac)
  * ┌───┬───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┬───┐
- * │{,[│ Q │ W │ F │ P │ B │       │ J │ L │ U │ Y │:,;│},]│
+ * │{,[│ Q │ W │ E │ R │ T │       │ Y │ U │ I │ O │ P │},]│
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │ ( │ A │ R │ S │ T │ G │       │ M │ N │ E │ I │ O │ ) │
+ * │ ( │ A │ S │ D │ F │ G │       │ H │ J │ K │ L │ ; │ ) │
  * ├───┼───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┼───┤
- * │=,+│ Z │ X │ C │ D │ v │       │ K │ H │ , │ . │ / │-,_│
+ * │=,+│ Z │ X │ C │ V │ B │       │ N │ M │ , │ . │ / │-,_│
  * └───┴───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┴───┘
  *               ┌───┐                   ┌───┐
  *               │ESC├───┐           ┌───┤DEL│
@@ -92,13 +92,13 @@
 #define QHRM_L       RALT_T(KC_L)
 #define QHRM_A       LGUI_T(KC_A)
 
-#define CHRM_T       LCTL_T(KC_T)
-#define CHRM_N       RCTL_T(KC_N)
-#define CHRM_S       LSFT_T(KC_S)
-#define CHRM_E       RSFT_T(KC_E)
-#define CHRM_R       LALT_T(KC_R)
-#define CHRM_I       RALT_T(KC_I)
-#define CHRM_A       LGUI_T(KC_A)
+#define MHRM_F       LCMD_T(KC_F)
+#define MHRM_J       RCMD_T(KC_J)
+#define MHRM_D       LSFT_T(KC_D)
+#define MHRM_K       RSFT_T(KC_K)
+#define MHRM_S       LALT_T(KC_S)
+#define MHRM_L       RALT_T(KC_L)
+#define MHRM_A       LCTL_T(KC_A)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Base Layer (QWERTY)
@@ -108,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQUAL, KC_Z,  KC_X,  KC_C,  KC_V, KC_B,                  KC_N,  KC_M, KC_COMM, KC_DOT,  KC_SLSH, KC_MINUS,
                      LT(5,KC_ESC), KC_SPC, LT(2,KC_TAB),     LT(3,KC_ENT), LT(4,KC_BSPC), KC_DEL
   ),
-  // Base Layer (Colemak)
+  // Base Layer (Mac)
   [1] = LAYOUT_split_3x6_3(
-        KC_LCBR,  KC_Q,  KC_W,  KC_F,  KC_P, KC_B,                  KC_J,  KC_L,    KC_U,   KC_Y, KC_COLON, KC_RCBR,
-        KC_LPRN,CHRM_A,CHRM_R,CHRM_S,CHRM_T, KC_G,                  KC_M,CHRM_N,  CHRM_E, CHRM_I,     KC_O, KC_RPRN,
-        KC_EQUAL, KC_Z,  KC_X,  KC_C,  KC_D, KC_V,                  KC_K,  KC_H, KC_COMM, KC_DOT,  KC_SLSH, KC_MINUS,
+        KC_LCBR,  KC_Q,  KC_W,  KC_E,  KC_R, KC_T,                  KC_Y,  KC_U,    KC_I,   KC_O,     KC_P, KC_RCBR,
+        KC_LPRN,MHRM_A,MHRM_S,MHRM_D,MHRM_F, KC_G,                  KC_H,MHRM_J,  MHRM_K, MHRM_L, KC_COLON, KC_RPRN,
+        KC_EQUAL, KC_Z,  KC_X,  KC_C,  KC_V, KC_B,                  KC_N,  KC_M, KC_COMM, KC_DOT,  KC_SLSH, KC_MINUS,
                      LT(5,KC_ESC), KC_SPC, LT(2,KC_TAB),     LT(3,KC_ENT), LT(4,KC_BSPC), KC_DEL
   ),
   // Number Layer
