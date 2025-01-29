@@ -15,8 +15,8 @@ keybinds clear-defaults=true {
         bind "Alt K" { MovePane "Up"; }
         bind "Alt ;" { NextSwapLayout; }
         bind "Alt t" { NewTab; }
-        bind "Alt (" { GoToPreviousTab; }
-        bind "Alt )" { GoToNextTab; }
+        bind "Alt Shift 9" { GoToPreviousTab; }
+        bind "Alt Shift 0" { GoToNextTab; }
         bind "Alt ." { ToggleFloatingPanes; }
         bind "Alt r" { SwitchToMode "RenameTab"; }
         bind "Alt u" { Resize "Increase"; }

@@ -5,5 +5,5 @@ gui:
 
   showBottomLine: false
 
-  screenMode: half
+  screenMode: fullscreen
   containerStatusHealthStyle: icon

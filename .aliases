@@ -1,6 +1,8 @@
 alias zz='source ~/.zshrc'
 alias za='source ~/.aliases'
 
+alias htop='btop -p 1'
+
 alias watch='watch -n1'
 alias ll='exa -alh --git --color-scale'
 alias l=ll
@@ -13,6 +15,7 @@ alias vim=nvim
 alias df='duf --output mountpoint,size,avail,usage /'
 alias wdf='watch duf --output mountpoint,size,usage,avail /'
 alias wips='watch ips'
+alias clip='pbcopy'
 alias ff='fzf | clip'
 
 alias docker-search='docker ps --format "{{.ID}}    {{.Names}}" | fzf | awk '\''BEGIN {ORS=""} { print $1; }'\'''

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-DIR=$(dirname $(readlink -e $0))
-source $DIR/.functions
+DIR=~/.dot
 
 if [[ $(uname -s) == "Linux" ]]; then
   OS=Linux
@@ -13,30 +12,8 @@ else
 fi
 
 # Install ZSH and OH-MY-ZSH
-ensure-installed git
-ensure-installed wget
-ensure-installed zsh
-ensure-installed cmake
-ensure-installed python3
-ensure-installed python-pip
-ensure-installed python3-pip
-ensure-installed python-argcomplete
-ensure-installed silversearcher-ag
-ensure-installed entr
-ensure-installed jq
-ensure-installed autotrash
-ensure-installed googler
-ensure-installed curl
-ensure-installed duf
-ensure-installed kitty
-
 # Update PIP if required
-pip install --upgrade pip
 pip3 install --upgrade pip
-
-# Install ipython CLI
-pip install --user ipython
-pip3 install --user ipython
 
 # Rust
 if ! command cargo &>/dev/null; then
@@ -75,13 +52,21 @@ if [[ $OS == "Linux" ]]; then
 fi
 
 if [[ $OS == "macOS" ]]; then
-  ensure-installed ip iproute2mac # for IP utils
-  ensure-installed watch
-  ensure-installed fd
-  ensure-installed coreutils # for GNU ls
-  ensure-installed exa
-  ensure-installed trash
-  ensure-installed uni
+  # ensure-installed ip iproute2mac # for IP utils
+  # ensure-installed watch
+  # ensure-installed fd
+  # ensure-installed coreutils # for GNU ls
+  # ensure-installed exa
+  # ensure-installed trash
+  # ensure-installed uni
+
+  if ! command http &>/dev/null; then
+    brew install --cask httpie
+  fi
+
+  if ! command btop &>/dev/null; then
+    brew install btop
+  fi
 
   # Install XCode tools
   xcode-select --install
@@ -89,13 +74,6 @@ fi
 
 # Create ~/.bin folder if not yet present
 mkdir -p ~/.bin
-
-# Install Fira Code Font
-if ! fc-list | grep -q firacode; then
-  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip -O /tmp/fira-code-symbols.zip
-  sudo unzip -o /tmp/fira-code-symbols.zip -d /usr/share/fonts/opentype/
-  sudo fc-cache -f -v # Refresh the font cache
-fi
 
 # Install OH MY ZSH & powerlevel10k
 echo "Installing OH MY ZSH now. If asked to start ZSH now, say 'No' to continue with installation!"
@@ -105,12 +83,6 @@ echo "Installing OH MY ZSH now. If asked to start ZSH now, say 'No' to continue 
 
 # Install translate CLI
 [[ ! -f ~/.bin/trans ]] && cd ~/.bin && wget git.io/trans && chmod +x ~/.bin/trans
-
-# Install HTTP Status Code CLI Utility
-! command -v hs &>/dev/null && npm install http-status-identifier-cli -g
-
-# Install SCP/SFTP TUI
-curl --proto '=https' --tlsv1.2 -sSLf "https://git.io/JBhDb" | sh
 
 # Create symlinks
 cd ~
@@ -122,11 +94,12 @@ ln -s -f $DIR/ips.py ~/.bin/ips
 ln -s -f $DIR/zellij ~/.config/zellij
 ln -s -f $DIR/kitty.conf ~/.config/kitty/kitty.conf
 ln -s -f $DIR/kitty-macos-launch-services-cmdline ~/.config/kitty/macos-launch-services-cmdline
-ln -s -f $DIR/plotjuggler.sh ~/.bin/plotjuggler
 ln -s -f $DIR/disk-cleanup.bash ~/.bin/disk-cleanup
-[[ -e ~/.config/catkin/verb_aliases/ ]] && ln -sf $DIR/catkin/01-clang-aliases.yaml ~/.config/catkin/verb_aliases/01-clang-aliases.yaml
 mkdir -p ~/.config/lazygit/ && ln -sf $DIR/lazygit.yaml ~/.config/lazygit/config.yml
 mkdir -p ~/.config/lazydocker/ && ln -sf $DIR/lazydocker.yaml ~/.config/lazydocker/config.yml
+ln -s -f $DIR/btop.conf ~/.config/btop/btop.conf
+
+# ~/Library/Application Support/jesseduffield/lazydocker/config.yml
 
 # Install Fuzzy finding
 if [[ ! -d ~/.fzf ]]; then
@@ -134,4 +107,12 @@ if [[ ! -d ~/.fzf ]]; then
   ~/.fzf/install --no-update-rc --key-bindings --completion
 fi
 
-zsh # Restart ZSH with new config
+# QMK
+if ! command -v qmk &>/dev/null; then
+  brew install qmk
+  qmk setup -H ~/.qmk
+  qmk config user.keyboard=beekeep/piantor
+  qmk config user.keymap=gollth
+  mkdir -p ~/.qmk/keyboards/beekeeb/piantor/keymaps/gollth
+  ln -sf ~/.qmk/keyboards/beekeeb/piantor/keymaps/gollth/keymap.c $DIR/keymap.c
+fi

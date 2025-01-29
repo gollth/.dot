@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCBR,  KC_Q,  KC_W,  KC_E,  KC_R, KC_T,                  KC_Y,  KC_U,    KC_I,   KC_O,     KC_P, KC_RCBR,
         KC_LPRN,MHRM_A,MHRM_S,MHRM_D,MHRM_F, KC_G,                  KC_H,MHRM_J,  MHRM_K, MHRM_L, KC_COLON, KC_RPRN,
         KC_EQUAL, KC_Z,  KC_X,  KC_C,  KC_V, KC_B,                  KC_N,  KC_M, KC_COMM, KC_DOT,  KC_SLSH, KC_MINUS,
-                     LT(5,KC_ESC), KC_SPC, LT(2,KC_TAB),     LT(3,KC_ENT), LT(4,KC_BSPC), KC_DEL
+                     LT(5,KC_ESC), _______, LT(2,KC_TAB),     LT(3,KC_ENT), LT(4,KC_BSPC), KC_DEL
   ),
   // Number Layer
   [2] = LAYOUT_split_3x6_3(
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, KC_PGUP, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
         XXXXXXX, KC_HOME, KC_LALT, KC_LSFT, KC_LCTL, XXXXXXX,             KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_END,  XXXXXXX,
         XXXXXXX, KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, XXXXXXX,             XXXXXXX, KC_PGDN, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
-                                       XXXXXXX, KC_LWIN, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX
+                               XXXXXXX, LCMD(KC_SPACE), XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX
   ),
   // Media Layer
   [5] = LAYOUT_split_3x6_3(
