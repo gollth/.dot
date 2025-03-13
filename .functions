@@ -117,7 +117,7 @@ roshost() {
 #
 calc() {
     expression=$@
-    python -c "from numpy import *; print($expression)"
+    python3 -c "from numpy import *; print($expression)"
 }
 
 rviz() {
