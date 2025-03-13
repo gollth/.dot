@@ -261,6 +261,43 @@ fmq() {
   mqtt sub -h ${HOST_:-localhost} -p ${PORT:-1883} -t $TOPIC | jq $COMPACT "${FILTER:-.}"
 }
 
+fob() {
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+    amr)
+        local KIND="amrTypes"
+        shift
+        ;;
+    backpack)
+        local KIND="backpacks"
+        shift
+        ;;
+    station)
+        local KIND="locationTypes"
+        shift
+        ;;
+    carrier)
+        local KIND="loadCarrierTypes"
+        shift
+        ;;
+    esac
+  done
+
+  if [[ -z $KIND ]]; then 
+    echo "Usage: fob KIND"
+    echo ""
+    echo "KIND:"
+    echo "     amr          - vehicle types"
+    echo "     backpack     - vehicle backpacks"
+    echo "     station      - station types"
+    echo "     carrier      - load carrier types"
+    return 1
+  fi
+
+  local FILTER=".$KIND | .[].arculusId"
+  cat ~/fleet/objects/objects.json | jq -r "${FILTER}" | ff
+}
+
 
 li-order() {
   while [[ $# -gt 0 ]]; do
